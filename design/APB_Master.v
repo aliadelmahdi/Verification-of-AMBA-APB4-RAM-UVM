@@ -8,7 +8,7 @@ module APB_Master (
         input [2:0] SPROT  ,
         input transfer ,   //to indicate the begenning of the transfer
 
-        //the followin signals are Mater signals
+        //the followin signals are Master signals
         output reg PSEL , PENABLE , PWRITE ,
         output reg [31:0] PADDR , PWDATA ,
         output reg [3:0] PSTRB ,

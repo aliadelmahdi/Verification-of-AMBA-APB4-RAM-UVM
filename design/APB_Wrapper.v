@@ -1,52 +1,39 @@
-module APB_Wrapper (
-        input PCLK , PRESETn ,
-        input SWRITE ,
-        input [31:0] SADDR , SWDATA , 
-        input [3:0] SSTRB ,
-        input [2:0] SPROT  ,
-        input transfer ,
-        output [31:0] PRDATA 
-    );
-    wire PSEL , PENABLE , PWRITE ;
-    wire [31:0] PADDR , PWDATA ;
-    wire [3:0] PSTRB ;
-    wire [2:0] PPROT ;
-    wire PREADY , PSLVERR ;
-
-    //instantiating our master
-    APB_Master Master (
-        .PCLK (PCLK),
-        .PRESETn(PRESETn),
-        .SWRITE(SWRITE),
-        .SADDR(SADDR),
-        .SWDATA(SWDATA),
-        .SSTRB(SSTRB),
-        .SPROT(SPROT),
-        .transfer(transfer),
-        .PSEL(PSEL),
-        .PENABLE(PENABLE),
-        .PWRITE(PWRITE),
-        .PADDR(PADDR),
-        .PWDATA(PWDATA),
-        .PSTRB(PSTRB),
-        .PPROT(PPROT),
-        .PREADY(PREADY),
-        .PSLVERR(PSLVERR)
-    );
-
-    //instantiating our slave
-    APB_Slave Slave (
-        .PCLK(PCLK),
-        .PRESETn(PRESETn),
-        .PSEL(PSEL),
-        .PENABLE(PENABLE),
-        .PWRITE(PWRITE),
-        .PADDR(PADDR),
-        .PWDATA(PWDATA),
-        .PSTRB(PSTRB),
-        .PPROT(PPROT),
-        .PREADY(PREADY),
-        .PSLVERR(PSLVERR),
-        .PRDATA(PRDATA)
-    );
+module APB_Wrapper(APB_if apb_if);
+  // Use the signals from the interface
+  // Instantiate the master:
+  APB_Master Master (
+      .PCLK    (apb_if.PCLK),
+      .PRESETn (apb_if.PRESETn),
+      .SWRITE  (apb_if.SWRITE),
+      .SADDR   (apb_if.SADDR),
+      .SWDATA  (apb_if.SWDATA),
+      .SSTRB   (apb_if.SSTRB),
+      .SPROT   (apb_if.SPROT),
+      .transfer(apb_if.transfer),
+      .PSEL    (apb_if.PSEL),
+      .PENABLE (apb_if.PENABLE),
+      .PWRITE  (apb_if.PWRITE),
+      .PADDR   (apb_if.PADDR),
+      .PWDATA  (apb_if.PWDATA),
+      .PSTRB   (apb_if.PSTRB),
+      .PPROT   (apb_if.PPROT),
+      .PREADY  (apb_if.PREADY),
+      .PSLVERR (apb_if.PSLVERR)
+  );
+  
+  // Instantiate the slave:
+  APB_Slave Slave (
+      .PCLK    (apb_if.PCLK),
+      .PRESETn (apb_if.PRESETn),
+      .PSEL    (apb_if.PSEL),
+      .PENABLE (apb_if.PENABLE),
+      .PWRITE  (apb_if.PWRITE),
+      .PADDR   (apb_if.PADDR),
+      .PWDATA  (apb_if.PWDATA),
+      .PSTRB   (apb_if.PSTRB),
+      .PPROT   (apb_if.PPROT),
+      .PREADY  (apb_if.PREADY),
+      .PSLVERR (apb_if.PSLVERR),
+      .PRDATA  (apb_if.PRDATA)
+  );
 endmodule
