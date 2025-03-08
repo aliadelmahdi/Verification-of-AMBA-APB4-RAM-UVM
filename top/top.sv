@@ -17,6 +17,7 @@ module tb_top;
     // Instantiate the interface
     APB_if apb_if (clk);
     APB_Wrapper DUT (apb_if);
+
     // Configure the UVM database and the test
     initial begin
         uvm_config_db #(virtual APB_if)::set (null,"*","apb_if",apb_if);

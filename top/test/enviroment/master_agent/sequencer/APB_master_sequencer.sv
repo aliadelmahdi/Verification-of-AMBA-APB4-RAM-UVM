@@ -6,7 +6,7 @@ package APB_master_sequencer_pkg;
 
     class APB_master_sequencer extends uvm_sequencer #(APB_master_seq_item);
 
-        `uvm_component_utils(APB_master_seq_item);
+        `uvm_component_utils(APB_master_sequencer);
 
         function new(string name = "APB_master_sequence", uvm_component parent);
             super.new(name,parent);

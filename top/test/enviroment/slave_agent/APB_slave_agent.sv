@@ -10,7 +10,7 @@ package APB_slave_agent_pkg;
  
     class APB_slave_agent extends uvm_agent;
 
-        `uvm_component_utils(apb_slave_agent)
+        `uvm_component_utils(APB_slave_agent)
         APB_slave_sequencer apb_slave_seqr;
         APB_slave_driver apb_slave_drv;
         APB_slave_monitor apb_slave_mon;

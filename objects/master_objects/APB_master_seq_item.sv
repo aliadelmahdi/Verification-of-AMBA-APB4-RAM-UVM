@@ -13,7 +13,7 @@ import uvm_pkg::*;
         rand bit transfer;
         rand bit PRESETn;
         logic PREADY;
-        logic PSLVERR
+        logic PSLVERR;
 
         //outputs
         logic PSEL, PENABLE, PWRITE;

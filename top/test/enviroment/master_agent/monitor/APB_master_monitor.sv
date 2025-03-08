@@ -1,13 +1,13 @@
 package APB_master_monitor_pkg;
 
     import uvm_pkg::*,
-           APB_seq_item_pkg::*;
+           APB_master_seq_item_pkg::*;
 
     `include "uvm_macros.svh"
 
     class APB_master_monitor extends uvm_monitor;
 
-        `uvm_component_utils (apb_master_monitor)
+        `uvm_component_utils (APB_master_monitor)
         virtual APB_if apb_if;
         APB_master_seq_item master_response_seq_item;
         uvm_analysis_port #(APB_master_seq_item) master_monitor_ap;
@@ -21,6 +21,11 @@ package APB_master_monitor_pkg;
             super.build_phase(phase);
             master_monitor_ap = new ("master_monitor_ap",this);
         endfunction
+
+        // Connect Phase
+        function void connect_phase(uvm_phase phase);
+			super.connect_phase(phase);
+		endfunction
 
         // Run Phase
         task run_phase (uvm_phase phase);

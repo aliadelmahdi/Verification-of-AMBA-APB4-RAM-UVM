@@ -1,7 +1,11 @@
 vlib work
 vlog -f "do file/list.list" -mfcu +cover -covercells
 vsim -voptargs=+acc work.tb_top -cover -classdebug -uvmcontrol=all
-add wave  /tb_top/DUT/* 
+add wave  /tb_top/DUT/apb_if/*
+view -new wave
+add wave  /tb_top/DUT/Master/*
+view -new wave
+add wave  /tb_top/DUT/Slave/*
 coverage save top.ucdb -onexit -du work.APB
 run -all
 coverage report -detail -cvg -directive -comments -output reports/APB_cover_report.txt /APB_coverage_pkg/APB_coverage/APB_crg

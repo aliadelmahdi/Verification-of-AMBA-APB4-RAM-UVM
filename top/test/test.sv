@@ -38,7 +38,7 @@ package APB_test_pkg;
             if(!uvm_config_db #(virtual APB_if)::get(this,"","apb_if",apb_cnfg.apb_if))  
                 `uvm_fatal("build_phase" , " test - Unable to get the virtual interface of the APB form the configuration database");
 
-            uvm_config_db # (APB_config)::set (this , "*" , "CFG",apb_cnfg );
+            uvm_config_db # (APB_config)::set(this , "*" , "CFG",apb_cnfg);
         endfunction
 
         task run_phase(uvm_phase phase);
@@ -52,8 +52,8 @@ package APB_test_pkg;
             
             // Main Sequence
             `uvm_info("run_phase", "Stimulus Generation Started",UVM_LOW)
-            apb_main_seq.start(apb_env.apb_slave_agent.apb_slave_seqr);
-            apb_main_seq.start(apb_env.apb_master_agent.apb_master_seqr);
+            apb_slave_main_seq.start(apb_env.apb_slave_agent.apb_slave_seqr);
+            apb_master_main_seq.start(apb_env.apb_master_agent.apb_master_seqr);
             `uvm_info("run_phase", "Stimulus Generation Ended",UVM_LOW) 
 
             phase.drop_objection(this);

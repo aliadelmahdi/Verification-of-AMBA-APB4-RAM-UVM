@@ -17,7 +17,7 @@ package APB_master_reset_sequence_pkg;
         task body;
             master_seq_item = APB_master_seq_item::type_id::create("master_seq_item");
 
-            start_item(seq_item);
+            start_item(master_seq_item);
                 master_seq_item.SWRITE = 0;
                 master_seq_item.SADDR = 0;
                 master_seq_item.SWDATA = 0;
@@ -25,7 +25,7 @@ package APB_master_reset_sequence_pkg;
                 master_seq_item.SPROT = 0;
                 master_seq_item.transfer = 0;
                 master_seq_item.PRESETn = 0;
-            finish_item(seq_item);
+            finish_item(master_seq_item);
         endtask
         
     endclass : APB_master_reset_sequence

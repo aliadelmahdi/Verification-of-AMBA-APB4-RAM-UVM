@@ -22,6 +22,11 @@ package APB_slave_monitor_pkg;
             slave_monitor_ap = new ("slave_monitor_ap",this);
         endfunction
 
+        // Connect Phase
+        function void connect_phase(uvm_phase phase);
+			super.connect_phase(phase);
+		endfunction
+
         // Run Phase
         task run_phase (uvm_phase phase);
             super.run_phase(phase);
