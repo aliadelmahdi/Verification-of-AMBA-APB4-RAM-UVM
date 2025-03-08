@@ -9,8 +9,8 @@ package APB_master_monitor_pkg;
 
         `uvm_component_utils (apb_master_monitor)
         virtual APB_if apb_if;
-        APB_seq_item master_response_seq_item;
-        uvm_analysis_port #(APB_seq_item) master_monitor_ap;
+        APB_master_seq_item master_response_seq_item;
+        uvm_analysis_port #(APB_master_seq_item) master_monitor_ap;
 
         function new(string name = "APB_master_monitor",uvm_component parent);
             super.new(name,parent);
@@ -26,7 +26,7 @@ package APB_master_monitor_pkg;
         task run_phase (uvm_phase phase);
             super.run_phase(phase);
             forever begin
-                master_response_seq_item = apb_seq_item::type_id::create("master_response_seq_item");
+                master_response_seq_item = APB_master_seq_item::type_id::create("master_response_seq_item");
                 @(negedge apb_if.PCLK);
                 master_response_seq_item.SWRITE = apb_if.SWRITE;
                 master_response_seq_item.SADDR = apb_if.SADDR;

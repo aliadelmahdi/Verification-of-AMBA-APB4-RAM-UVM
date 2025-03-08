@@ -1,11 +1,11 @@
-interface APB_if(input logic PCLK, input logic PRESETn);
+interface APB_if(input logic PCLK);
   // External stimulus signals
   logic         SWRITE;
   logic [31:0]  SADDR, SWDATA;
   logic [3:0]   SSTRB;
   logic [2:0]   SPROT;
   logic         transfer;
-
+  logic PRESETn;
   // Internal bus signals (from master to slave)
   logic         PSEL, PENABLE, PWRITE;
   logic [31:0]  PADDR, PWDATA;

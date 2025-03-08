@@ -1,16 +1,16 @@
 package APB_slave_monitor_pkg;
 
     import uvm_pkg::*,
-           APB_seq_item_pkg::*;
+           APB_slave_seq_item_pkg::*;
 
     `include "uvm_macros.svh"
 
     class APB_slave_monitor extends uvm_monitor;
 
-        `uvm_component_utils (apb_slave_monitor)
+        `uvm_component_utils (APB_slave_monitor)
         virtual APB_if apb_if;
-        APB_seq_item slave_response_seq_item;
-        uvm_analysis_port #(APB_seq_item) slave_monitor_ap;
+        APB_slave_seq_item slave_response_seq_item;
+        uvm_analysis_port #(APB_slave_seq_item) slave_monitor_ap;
 
         function new(string name = "APB_slave_monitor",uvm_component parent);
             super.new(name,parent);
@@ -26,7 +26,7 @@ package APB_slave_monitor_pkg;
         task run_phase (uvm_phase phase);
             super.run_phase(phase);
             forever begin
-                slave_response_seq_item = apb_seq_item::type_id::create("slave_response_seq_item");
+                slave_response_seq_item = APB_slave_seq_item::type_id::create("slave_response_seq_item");
                 @(negedge apb_if.PCLK);
                 slave_response_seq_item.PSEL = apb_if.PSEL;
                 slave_response_seq_item.PENABLE = apb_if.PENABLE;

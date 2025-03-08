@@ -1,9 +1,9 @@
 package APB_master_agent_pkg;
     import uvm_pkg::*,
-        APB_seq_item_pkg::*,
+        APB_master_seq_item_pkg::*,
         APB_master_driver_pkg::*,
-        APB_main_sequence_pkg::*,
-        APB_reset_sequence_pkg::*,
+        APB_master_main_sequence_pkg::*,
+        APB_master_reset_sequence_pkg::*,
         APB_master_sequencer_pkg::*,
         APB_master_monitor_pkg::*,
         APB_config_pkg::*;
@@ -11,12 +11,12 @@ package APB_master_agent_pkg;
  
     class APB_master_agent extends uvm_agent;
 
-        `uvm_component_utils(apb_master_agent)
+        `uvm_component_utils(APB_master_agent)
         APB_master_sequencer apb_master_seqr;
         APB_master_driver apb_master_drv;
         APB_master_monitor apb_master_mon;
         APB_config apb_master_cnfg;
-        uvm_analysis_port #(APB_seq_item) apb_master_agent_ap;
+        uvm_analysis_port #(APB_master_seq_item) apb_master_agent_ap;
 
         function new(string name = "APB_master_agent", uvm_component parent);
             super.new(name,parent);

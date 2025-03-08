@@ -4,9 +4,9 @@ package APB_slave_sequencer_pkg;
     import APB_seq_item_pkg::*;
     `include "uvm_macros.svh"
 
-    class APB_slave_sequencer extends uvm_sequencer #(apb_slave_seq_item);
+    class APB_slave_sequencer extends uvm_sequencer #(APB_slave_seq_item);
 
-        `uvm_component_utils(apb_slave_sequencer);
+        `uvm_component_utils(APB_slave_sequencer);
 
         function new(string name = "APB_slave_sequence", uvm_component parent);
             super.new(name,parent);

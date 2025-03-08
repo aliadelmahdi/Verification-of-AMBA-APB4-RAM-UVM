@@ -3,9 +3,11 @@ design\\APB_Wrapper.v
 design\\APB_Slave.v
 design\\APB_Master.v
 objects\\APB_config.sv
-objects\\APB_seq_item.sv
-objects\\APB_main_sequence.sv
-objects\\APB_reset_sequence.sv
+objects\\master_objects\\APB_master_seq_item.sv
+objects\\master_objects\\APB_master_main_sequence.sv
+objects\\master_objects\\APB_master_reset_sequence.sv
+objects\\slave_objects\\APB_slave_seq_item.sv
+objects\\slave_objects\\APB_slave_main_sequence.sv
 top\\test\\env\\master_agent\\sequencer\\master_APB_sequencer.sv
 top\\test\\env\\master_agent\\driver\\master_APB_driver.sv
 top\\test\\env\\master_agent\\monitor\\master_APB_monitor.sv

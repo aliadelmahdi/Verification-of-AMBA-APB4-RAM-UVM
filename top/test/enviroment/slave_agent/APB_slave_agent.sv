@@ -1,9 +1,8 @@
 package APB_slave_agent_pkg;
     import uvm_pkg::*,
-        APB_seq_item_pkg::*,
+        APB_slave_seq_item_pkg::*,
         APB_slave_driver_pkg::*,
-        APB_main_sequence_pkg::*,
-        APB_reset_sequence_pkg::*,
+        APB_slave_main_sequence_pkg::*,
         APB_slave_sequencer_pkg::*,
         APB_slave_monitor_pkg::*,
         APB_config_pkg::*;
@@ -16,7 +15,7 @@ package APB_slave_agent_pkg;
         APB_slave_driver apb_slave_drv;
         APB_slave_monitor apb_slave_mon;
         APB_config apb_slave_cnfg;
-        uvm_analysis_port #(APB_seq_item) apb_slave_agent_ap;
+        uvm_analysis_port #(APB_slave_seq_item) apb_slave_agent_ap;
 
         function new(string name = "APB_slave_agent", uvm_component parent);
             super.new(name,parent);
