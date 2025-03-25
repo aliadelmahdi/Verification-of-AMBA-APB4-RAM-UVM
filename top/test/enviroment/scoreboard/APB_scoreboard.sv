@@ -6,6 +6,7 @@ package APB_scoreboard_pkg;
     `include "uvm_macros.svh"
     class APB_scoreboard extends uvm_scoreboard;
         `uvm_component_utils(APB_scoreboard)
+        
         uvm_analysis_export #(APB_master_seq_item) master_sb_export;
         uvm_tlm_analysis_fifo #(APB_master_seq_item) apb_master_sb;
         APB_master_seq_item master_seq_item_sb;

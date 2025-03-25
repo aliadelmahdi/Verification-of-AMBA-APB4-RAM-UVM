@@ -17,7 +17,7 @@ package APB_env_pkg;
             APB_master_agent_pkg::*,
             APB_coverage_pkg::*;
     `include "uvm_macros.svh"
-
+    // For single scoreboard uncomment
     class APB_env extends uvm_env;
         `uvm_component_utils(APB_env)
 
@@ -30,6 +30,9 @@ package APB_env_pkg;
         APB_scoreboard apb_slave_sb;
         APB_coverage apb_slave_cov;
 
+        // APB_scoreboard apb_sb;
+        // APB_coverage apb_cov;
+
         function new (string name = "APB_env", uvm_component parent);
             super.new(name,parent);
         endfunction
@@ -38,11 +41,16 @@ package APB_env_pkg;
         super.build_phase (phase);
             apb_slave_agent = APB_slave_agent::type_id::create("apb_slave_agent",this);
             apb_master_agent = APB_master_agent::type_id::create("apb_master_agent",this);
+
             apb_master_sb= APB_scoreboard::type_id::create("apb_master_sb",this);
             apb_master_cov= APB_coverage::type_id::create("apb_master_cov",this);
 
             apb_slave_sb= APB_scoreboard::type_id::create("apb_slave_sb",this);
             apb_slave_cov= APB_coverage::type_id::create("apb_slave_cov",this);
+
+            // apb_sb= APB_scoreboard::type_id::create("apb_sb",this);
+            // apb_cov= APB_coverage::type_id::create("apb_cov",this);
+
         endfunction
 
         function void connect_phase (uvm_phase phase );
@@ -50,6 +58,11 @@ package APB_env_pkg;
             apb_slave_agent.apb_slave_agent_ap.connect(apb_slave_cov.slave_cov_export);
             apb_master_agent.apb_master_agent_ap.connect(apb_master_sb.master_sb_export);
             apb_master_agent.apb_master_agent_ap.connect(apb_master_cov.master_cov_export);
+
+            // apb_slave_agent.apb_slave_agent_ap.connect(apb_sb.sb_export);
+            // apb_slave_agent.apb_slave_agent_ap.connect(apb_cov.cov_export);
+            // apb_master_agent.apb_master_agent_ap.connect(apb_sb.sb_export);
+            // apb_master_agent.apb_master_agent_ap.connect(apb_cov.cov_export);
         endfunction
     endclass : APB_env
 endpackage : APB_env_pkg
