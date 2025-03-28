@@ -15,7 +15,7 @@ package APB_master_main_sequence_pkg;
         
         task body;
 
-            repeat(1000) begin
+            repeat(10000) begin
                 seq_item = APB_master_seq_item::type_id::create("seq_item");
                 start_item(seq_item);
                 assert(seq_item.randomize()) else $error("Randomization Failed");

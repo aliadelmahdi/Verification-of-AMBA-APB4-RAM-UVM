@@ -1,28 +1,29 @@
+// Define constants for signal widths and values
+`define APB_ADDR_WIDTH 32
+`define APB_DATA_WIDTH 32
+`define APB_STRB_WIDTH 4
+`define APB_PROT_WIDTH 3
+
+// Define for signal states
+`define LOW 0
+`define HIGH 1
+
 interface APB_if(input bit PCLK);
   // External stimulus signals
-  logic         SWRITE;
-  logic [31:0]  SADDR, SWDATA;
-  logic [3:0]   SSTRB;
-  logic [2:0]   SPROT;
-  logic         transfer;
-  logic PRESETn;
+  logic                       SWRITE;
+  logic [`APB_ADDR_WIDTH-1:0] SADDR, SWDATA;  // Using the defined width
+  logic [`APB_STRB_WIDTH-1:0] SSTRB;
+  logic [`APB_PROT_WIDTH-1:0] SPROT;
+  logic                       transfer;
+  logic                       PRESETn;
+
   // Internal bus signals (from master to slave)
-  logic         PSEL, PENABLE, PWRITE;
-  logic [31:0]  PADDR, PWDATA;
-  logic [3:0]   PSTRB;
-  logic [2:0]   PPROT;
-  logic         PREADY, PSLVERR;
+  logic                       PSEL, PENABLE, PWRITE;
+  logic [`APB_ADDR_WIDTH-1:0] PADDR, PWDATA;  // Using the defined width
+  logic [`APB_STRB_WIDTH-1:0] PSTRB;
+  logic [`APB_PROT_WIDTH-1:0] PPROT;
+  logic                       PREADY, PSLVERR;
   
   // Slave output signal
-  logic [31:0]  PRDATA;
-  
-  modport master_drv_mp(input SWRITE, SADDR, SWDATA, SSTRB, SPROT, transfer, PREADY, PSLVERR, PRESETn, PCLK,
-        output PSEL, PENABLE, PWRITE, PADDR, PWDATA, PSTRB, PPROT);
-  modport slave_drv_mp (input  PSEL, PENABLE, PWRITE, PADDR, PWDATA, PSTRB, PPROT, PCLK, PRESETn,
-        output PRDATA, PREADY, PSLVERR);
-  modport master_mon_mp(input SWRITE, SADDR, SWDATA, SSTRB, SPROT, transfer, PREADY, PSLVERR, PRESETn, PCLK,
-        PSEL, PENABLE, PWRITE, PADDR, PWDATA, PSTRB, PPROT);
-  modport slave_mon_mp(input PSEL, PENABLE, PWRITE, PADDR, PWDATA, PSTRB, PPROT, PCLK, PRESETn,
-        PRDATA, PREADY, PSLVERR);
-
+  logic [`APB_DATA_WIDTH-1:0] PRDATA;  // Using the defined width
 endinterface

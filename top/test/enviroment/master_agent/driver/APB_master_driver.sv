@@ -29,20 +29,7 @@ package APB_master_driver_pkg;
                 apb_if.SSTRB = stimulus_seq_item.SSTRB;
                 apb_if.SPROT = stimulus_seq_item.SPROT;
                 apb_if.transfer = stimulus_seq_item.transfer;
-                apb_if.PENABLE = stimulus_seq_item.PENABLE;
-
-                apb_if.PSEL = stimulus_seq_item.PSEL;
-                apb_if.PWRITE = stimulus_seq_item.PWRITE;
-                apb_if.PADDR = stimulus_seq_item.PADDR;
-
-                apb_if.PWDATA = stimulus_seq_item.PWDATA;
-
-                apb_if.PSTRB = stimulus_seq_item.PSTRB;
-                apb_if.PPROT = stimulus_seq_item.PPROT;
                 apb_if.PRESETn = stimulus_seq_item.PRESETn;
-                apb_if.PREADY = stimulus_seq_item.PREADY;
-                apb_if.PSLVERR = stimulus_seq_item.PSLVERR;
-
                 @(negedge apb_if.PCLK)
                 seq_item_port.item_done();
                 `uvm_info("run_phase",stimulus_seq_item.sprint(),UVM_HIGH)

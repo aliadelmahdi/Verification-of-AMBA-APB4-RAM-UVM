@@ -1,7 +1,7 @@
 package APB_master_sequencer_pkg;
 
-    import uvm_pkg::*;
-    import APB_master_seq_item_pkg::*;
+    import uvm_pkg::*,
+           APB_master_seq_item_pkg::*;
     `include "uvm_macros.svh"
 
     class APB_master_sequencer extends uvm_sequencer #(APB_master_seq_item);

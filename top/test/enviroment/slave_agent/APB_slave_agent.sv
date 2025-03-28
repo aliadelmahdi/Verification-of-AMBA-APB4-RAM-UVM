@@ -16,6 +16,7 @@ package APB_slave_agent_pkg;
         APB_slave_monitor apb_slave_mon;
         APB_config apb_slave_cnfg;
         uvm_analysis_port #(APB_slave_seq_item) apb_slave_agent_ap;
+        uvm_active_passive_enum is_active;
 
         function new(string name = "APB_slave_agent", uvm_component parent);
             super.new(name,parent);
@@ -26,20 +27,22 @@ package APB_slave_agent_pkg;
 
             if(!uvm_config_db #(APB_config)::get(this,"","CFG",apb_slave_cnfg)) 
                 `uvm_fatal ("build_phase","Unable to get the slave configuration object from the database")
-            
-            apb_slave_drv = APB_slave_driver::type_id::create("apb_slave_drv",this);
-            apb_slave_seqr = APB_slave_sequencer::type_id::create("apb_slave_seqr",this);
+            is_active = apb_slave_cnfg.is_active;
+            if(is_active==UVM_ACTIVE)begin
+                apb_slave_drv = APB_slave_driver::type_id::create("apb_slave_drv",this);
+                apb_slave_seqr = APB_slave_sequencer::type_id::create("apb_slave_seqr",this);
+            end
             apb_slave_mon = APB_slave_monitor::type_id::create("apb_slave_mon",this);
             apb_slave_agent_ap = new("apb_slave_agent_ap",this);
         endfunction
 
         function void connect_phase(uvm_phase phase);
-
-            apb_slave_drv.apb_if = apb_slave_cnfg.apb_if;
-            apb_slave_mon.apb_if = apb_slave_cnfg.apb_if;
-
-            apb_slave_drv.seq_item_port.connect(apb_slave_seqr.seq_item_export);
+            if(is_active==UVM_ACTIVE)begin
+              apb_slave_drv.seq_item_port.connect(apb_slave_seqr.seq_item_export);
+              apb_slave_drv.apb_if = apb_slave_cnfg.apb_if;
+            end
             apb_slave_mon.slave_monitor_ap.connect(apb_slave_agent_ap);
+            apb_slave_mon.apb_if = apb_slave_cnfg.apb_if;
         endfunction
 
     endclass : APB_slave_agent

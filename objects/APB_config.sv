@@ -7,6 +7,7 @@ package APB_config_pkg;
 
         `uvm_object_utils (APB_config);
         virtual APB_if apb_if;
+        uvm_active_passive_enum is_active;
 
         function new(string name = "APB_config");
             super.new(name);

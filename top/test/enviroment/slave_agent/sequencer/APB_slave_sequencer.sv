@@ -1,7 +1,7 @@
 package APB_slave_sequencer_pkg;
 
-    import uvm_pkg::*;
-    import APB_slave_seq_item_pkg::*;
+    import uvm_pkg::*,
+           APB_slave_seq_item_pkg::*;
     `include "uvm_macros.svh"
 
     class APB_slave_sequencer extends uvm_sequencer #(APB_slave_seq_item);

@@ -2,6 +2,7 @@ package APB_master_seq_item_pkg;
 
 import uvm_pkg::*;
 `include "uvm_macros.svh"
+`define LOW 0
  
     class APB_master_seq_item extends uvm_sequence_item;
         `uvm_object_utils(APB_master_seq_item)

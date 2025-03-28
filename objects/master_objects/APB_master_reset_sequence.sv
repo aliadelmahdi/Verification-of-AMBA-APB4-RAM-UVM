@@ -2,7 +2,6 @@ package APB_master_reset_sequence_pkg;
 
     import uvm_pkg::*,
            APB_master_seq_item_pkg::*;
-
     `include "uvm_macros.svh"
 
     class APB_master_reset_sequence extends uvm_sequence #(APB_master_seq_item);
@@ -16,15 +15,14 @@ package APB_master_reset_sequence_pkg;
 
         task body;
             master_seq_item = APB_master_seq_item::type_id::create("master_seq_item");
-
             start_item(master_seq_item);
-                master_seq_item.SWRITE = 0;
-                master_seq_item.SADDR = 0;
-                master_seq_item.SWDATA = 0;
-                master_seq_item.SSTRB = 0;
-                master_seq_item.SPROT = 0;
-                master_seq_item.transfer = 0;
-                master_seq_item.PRESETn = 0;
+                master_seq_item.SWRITE = `LOW;
+                master_seq_item.SADDR = `LOW;
+                master_seq_item.SWDATA = `LOW;
+                master_seq_item.SSTRB = `LOW;
+                master_seq_item.SPROT = `LOW;
+                master_seq_item.transfer = `LOW;
+                master_seq_item.PRESETn = `LOW;
             finish_item(master_seq_item);
         endtask
         

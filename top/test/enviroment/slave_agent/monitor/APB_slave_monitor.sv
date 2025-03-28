@@ -37,17 +37,13 @@ package APB_slave_monitor_pkg;
                 slave_response_seq_item.PENABLE = apb_if.PENABLE;
                 slave_response_seq_item.PWRITE = apb_if.PWRITE;
                 slave_response_seq_item.PADDR = apb_if.PADDR;
-
                 slave_response_seq_item.PWDATA = apb_if.PWDATA;
                 slave_response_seq_item.PSTRB = apb_if.PSTRB;
-
                 slave_response_seq_item.PPROT = apb_if.PPROT;
                 slave_response_seq_item.PRDATA = apb_if.PRDATA;
-
                 slave_response_seq_item.PREADY = apb_if.PREADY;
                 slave_response_seq_item.PSLVERR = apb_if.PSLVERR;
                 slave_response_seq_item.PRESETn = apb_if.PRESETn;
-
                 slave_monitor_ap.write(slave_response_seq_item);
                 `uvm_info("run_phase", slave_response_seq_item.sprint(), UVM_HIGH)
             end
