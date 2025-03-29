@@ -108,7 +108,8 @@ package APB_master_seq_item_pkg;
                     PSTRB_SH_MSB_LSB :/ 5,
                     PSTRB_SB_MSB_2ND :/ 5,
                     PSTRB_SH_MSB     :/ 5,
-                    PSTRB_SH_LSB     :/ 5
+                    PSTRB_SH_LSB     :/ 5,
+                    `LOW             :/ 5
                 };
             }
         }

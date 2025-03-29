@@ -10,12 +10,12 @@ log -r /*
 add wave /tb_top/DUT/Slave/*
 add wave /tb_top/DUT/Slave/Cache
 add wave /tb_top/DUT/Master/*
-coverage save top.ucdb -onexit -du work.APB
+coverage save top.ucdb -onexit -du work.APB_Master -du work.APB_Slave  -du work.APB_Wrapper
 vcd file reports/waves.vcd
 vcd add -r /* 
 run -all
 transcript off
 vcd flush
 coverage report -detail -cvg -directive -comments -output reports/APB_cover_report.txt /APB_coverage_pkg/APB_coverage/apb_cov_grp
-#quit -sim
+quit -sim
 vcover report top.ucdb -details -annotate -all -output reports/APB_report.txt
