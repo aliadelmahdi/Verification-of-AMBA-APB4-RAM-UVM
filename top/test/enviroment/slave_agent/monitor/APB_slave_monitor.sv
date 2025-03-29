@@ -44,6 +44,11 @@ package APB_slave_monitor_pkg;
                 slave_response_seq_item.PREADY = apb_if.PREADY;
                 slave_response_seq_item.PSLVERR = apb_if.PSLVERR;
                 slave_response_seq_item.PRESETn = apb_if.PRESETn;
+                // Golden Model
+                slave_response_seq_item.PREADY_ref = apb_if.PREADY_ref;
+                slave_response_seq_item.PSLVERR_ref = apb_if.PSLVERR_ref;
+                slave_response_seq_item.PRDATA_ref = apb_if.PRDATA_ref;
+               
                 slave_monitor_ap.write(slave_response_seq_item);
                 `uvm_info("run_phase", slave_response_seq_item.sprint(), UVM_HIGH)
             end

@@ -1,19 +1,17 @@
 // The following `define` values represent bit widths and sizes used in the design. 
 // are only for convenience and to make the code more readable. 
-`define APB_ADDR_WIDTH 32
-`define APB_DATA_WIDTH 32
-`define APB_STRB_WIDTH 4
-`define APB_PROT_WIDTH 3
+`include "apb_defines.svh" // For macros
 
 module APB_Master (
         //the followin signals are from the External System 
         //the system signals names will begin with letter S
         //note : we will act as the external system in the testbench
         input SWRITE,
-        input [`APB_ADDR_WIDTH-1:0] SADDR, SWDATA, 
+        input [`APB_ADDR_WIDTH-1:0] SADDR, 
+        input [`APB_DATA_WIDTH-1:0] SWDATA, 
         input [`APB_STRB_WIDTH-1:0] SSTRB,
         input [`APB_PROT_WIDTH-1:0] SPROT,
-        input transfer,   //to indicate the begenning of the transfer
+        input transfer,   //to indicate the beginning of the transfer
 
         //the followin signals are Master signals
         output reg PSEL, PENABLE, PWRITE,

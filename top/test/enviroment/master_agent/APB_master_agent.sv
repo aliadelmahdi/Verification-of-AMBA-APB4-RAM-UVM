@@ -35,14 +35,16 @@ package APB_master_agent_pkg;
         endfunction
 
         function void connect_phase(uvm_phase phase);
-
             apb_master_drv.apb_if = apb_master_cnfg.apb_if;
             apb_master_mon.apb_if = apb_master_cnfg.apb_if;
-
             apb_master_drv.seq_item_port.connect(apb_master_seqr.seq_item_export);
             apb_master_mon.master_monitor_ap.connect(apb_master_agent_ap);
         endfunction
 
+        // Run Phase
+        task run_phase (uvm_phase phase);
+            super.run_phase(phase);
+        endtask
     endclass : APB_master_agent
 
 endpackage : APB_master_agent_pkg

@@ -3,6 +3,7 @@ package APB_master_main_sequence_pkg;
     import uvm_pkg::*;
     import APB_master_seq_item_pkg::*;
     `include "uvm_macros.svh"
+    `include "apb_defines.svh" // For macros
 
     class APB_master_main_sequence extends uvm_sequence #(APB_master_seq_item);
 
@@ -15,10 +16,10 @@ package APB_master_main_sequence_pkg;
         
         task body;
 
-            repeat(10000) begin
+            repeat(`TEST_ITER_LARGE) begin
                 seq_item = APB_master_seq_item::type_id::create("seq_item");
                 start_item(seq_item);
-                assert(seq_item.randomize()) else $error("Randomization Failed");
+                assert(seq_item.randomize()) else $error("Master Randomization Failed");
                 finish_item(seq_item);
             end
 

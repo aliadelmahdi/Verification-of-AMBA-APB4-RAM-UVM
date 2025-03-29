@@ -15,7 +15,7 @@ package APB_slave_main_sequence_pkg;
         
         task body;
 
-            repeat(2) begin
+            repeat(`TEST_ITER_MEDIUM) begin
                 slave_seq_item = APB_slave_seq_item::type_id::create("slave_seq_item");
                 start_item(slave_seq_item);
                 assert(slave_seq_item.randomize()) else $error("Randomization Failed");

@@ -45,6 +45,10 @@ package APB_slave_agent_pkg;
             apb_slave_mon.apb_if = apb_slave_cnfg.apb_if;
         endfunction
 
+        // Run Phase
+        task run_phase (uvm_phase phase);
+            super.run_phase(phase);
+        endtask
     endclass : APB_slave_agent
 
 endpackage : APB_slave_agent_pkg

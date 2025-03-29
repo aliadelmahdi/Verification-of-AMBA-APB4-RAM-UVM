@@ -1,5 +1,8 @@
+interface/apb_defines.svh
+interface/shared_pkg.sv
 interface/APB_if.sv
 design/APB_design/APB_Wrapper.v
+design/APB_design/golden_model.sv
 design/APB_design/APB_Slave.v
 design/APB_design/APB_Master.v
 design/APB_Assertions/APB_sva.sv

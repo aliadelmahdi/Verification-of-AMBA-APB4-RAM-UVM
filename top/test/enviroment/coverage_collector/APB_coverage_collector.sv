@@ -1,5 +1,5 @@
 package APB_coverage_pkg;
- import     uvm_pkg::*,
+    import  uvm_pkg::*,
             APB_slave_driver_pkg::*,
             APB_master_driver_pkg::*,
             APB_scoreboard_pkg::*,
@@ -25,7 +25,6 @@ package APB_coverage_pkg;
         uvm_analysis_export #(APB_master_seq_item) master_cov_export;
         uvm_tlm_analysis_fifo #(APB_master_seq_item) master_cov_apb;
         APB_master_seq_item master_seq_item_cov;
-
         uvm_analysis_export #(APB_slave_seq_item) slave_cov_export;
         uvm_tlm_analysis_fifo #(APB_slave_seq_item) slave_cov_apb;
         APB_slave_seq_item slave_seq_item_cov;

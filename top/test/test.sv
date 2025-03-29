@@ -36,14 +36,13 @@ package APB_test_pkg;
             apb_master_reset_seq = APB_master_reset_sequence::type_id::create("reset_seq",this);
 
             if(!uvm_config_db #(virtual APB_if)::get(this,"","apb_if",apb_master_cnfg.apb_if))  
-                `uvm_fatal("build_phase" , " test - Unable to get the virtual interface of the APB form the configuration database");
+                `uvm_fatal("build_phase" , " test - Unable to get the master virtual interface of the APB form the configuration database");
             
             if(!uvm_config_db #(virtual APB_if)::get(this,"","apb_if",apb_slave_cnfg.apb_if))  
-                `uvm_fatal("build_phase" , " test - Unable to get the virtual interface of the APB form the configuration database");
+                `uvm_fatal("build_phase" , " test - Unable to get the slave virtual interface of the APB form the configuration database");
         
             apb_master_cnfg.is_active =UVM_ACTIVE;
             apb_slave_cnfg.is_active =UVM_PASSIVE;
-
             uvm_config_db # (APB_config)::set(this , "*" , "CFG",apb_master_cnfg);
             uvm_config_db # (APB_config)::set(this , "*" , "CFG",apb_slave_cnfg);
         endfunction
