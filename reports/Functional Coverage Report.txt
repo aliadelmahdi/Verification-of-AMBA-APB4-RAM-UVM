@@ -1,0 +1,256 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /APB_coverage_pkg
+=== Design Unit: work.APB_coverage_pkg
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      1        na        na    98.41%
+        Coverpoints/Crosses          7        na        na        na
+            Covergroup Bins         50        49         1    98.00%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /APB_coverage_pkg/APB_coverage/apb_cov_grp       98.41%        100          -    Uncovered            
+    covered/total bins:                                    49         50          -                      
+    missing/total bins:                                     1         50          -                      
+    % Hit:                                             98.00%        100          -                      
+    Coverpoint rst_n_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint transfer_cp                            100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint pslverr_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint fsm_transitions_cp                      88.88%        100          -    Uncovered            
+        covered/total bins:                                 8          9          -                      
+        missing/total bins:                                 1          9          -                      
+        % Hit:                                         88.88%        100          -                      
+    Coverpoint pstrb_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint address_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint sprot_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 8          8          -                      
+        missing/total bins:                                 0          8          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/APB_coverage_pkg::APB_coverage::apb_cov_grp  
+                                                       98.41%        100          -    Uncovered            
+    covered/total bins:                                    49         50          -                      
+    missing/total bins:                                     1         50          -                      
+    % Hit:                                             98.00%        100          -                      
+    Coverpoint rst_n_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin active                                        309          1          -    Covered              
+        bin inactive                                     9692          1          -    Covered              
+        bin inactive_to_active                            299          1          -    Covered              
+        bin active_to_inactive                            300          1          -    Covered              
+    Coverpoint transfer_cp                            100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin active                                       9708          1          -    Covered              
+        bin inactive                                      293          1          -    Covered              
+        bin active_to_inactive                            278          1          -    Covered              
+        bin inactive_to_active                            279          1          -    Covered              
+    Coverpoint pslverr_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin SUCCESS                                      7827          1          -    Covered              
+        bin ERROR                                        2174          1          -    Covered              
+        bin active_to_inactive                            846          1          -    Covered              
+        bin inactive_to_active                            846          1          -    Covered              
+    Coverpoint fsm_transitions_cp                      88.88%        100          -    Uncovered            
+        covered/total bins:                                 8          9          -                      
+        missing/total bins:                                 1          9          -                      
+        % Hit:                                         88.88%        100          -                      
+        bin IDLE                                          450          1          -    Covered              
+        bin SETUP                                        4848          1          -    Covered              
+        bin ACCESS                                       4703          1          -    Covered              
+        bin IDLE_to_IDLE                                   34          1          -    Covered              
+        bin IDLE_to_SETUP                                 416          1          -    Covered              
+        bin SETUP_to_ACCESS                              4703          1          -    Covered              
+        bin ACCESS_to_SETUP                              4432          1          -    Covered              
+        bin ACCESS_to_IDLE                                271          1          -    Covered              
+        bin ACCESS_to_ACCESS                                0          1          -    ZERO                 
+    Coverpoint pstrb_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin PSTRB_SB_LSB                                  369          1          -    Covered              
+        bin PSTRB_SB_2ND                                  339          1          -    Covered              
+        bin PSTRB_SH_LSB                                  378          1          -    Covered              
+        bin PSTRB_SB_3RD                                  368          1          -    Covered              
+        bin PSTRB_SB_3RD_LSB                              359          1          -    Covered              
+        bin PSTRB_SB_2ND_3RD                              362          1          -    Covered              
+        bin PSTRB_SH_LSB_3B                               367          1          -    Covered              
+        bin PSTRB_SB_MSB                                  345          1          -    Covered              
+        bin PSTRB_SB_MSB_LSB                              359          1          -    Covered              
+        bin PSTRB_SH_MSB                                  366          1          -    Covered              
+        bin PSTRB_SH_MSB_LSB                              370          1          -    Covered              
+        bin PSTRB_SB_MSB_2ND                              359          1          -    Covered              
+        bin PSTRB_SB_MSB_3B                              1136          1          -    Covered              
+        bin PSTRB_SH_MSB_3B                              1206          1          -    Covered              
+        bin PSTRB_FULL_WORD                              2201          1          -    Covered              
+    Coverpoint address_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin lower_half                                   5205          1          -    Covered              
+        bin upper_half                                   4796          1          -    Covered              
+        bin full_range                                  10001          1          -    Covered              
+        bin first_addr                                    335          1          -    Covered              
+        bin middle_addr                                    10          1          -    Covered              
+        bin last_addr                                       9          1          -    Covered              
+    Coverpoint sprot_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 8          8          -                      
+        missing/total bins:                                 0          8          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin normal_secure_data                           2317          1          -    Covered              
+        bin normal_nonsecure_data                        4085          1          -    Covered              
+        bin privileged_secure_data                       4085          1          -    Covered              
+        bin privileged_nonsecure_data                    4085          1          -    Covered              
+        bin normal_secure_instr                          4085          1          -    Covered              
+        bin normal_nonsecure_instr                       4085          1          -    Covered              
+        bin privileged_secure_instr                      4085          1          -    Covered              
+        bin privileged_nonsecure_instr                   1768          1          -    Covered              
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /APB_coverage_pkg/APB_coverage/apb_cov_grp       98.41%        100          -    Uncovered            
+    covered/total bins:                                    49         50          -                      
+    missing/total bins:                                     1         50          -                      
+    % Hit:                                             98.00%        100          -                      
+    Coverpoint rst_n_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint transfer_cp                            100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint pslverr_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint fsm_transitions_cp                      88.88%        100          -    Uncovered            
+        covered/total bins:                                 8          9          -                      
+        missing/total bins:                                 1          9          -                      
+        % Hit:                                         88.88%        100          -                      
+    Coverpoint pstrb_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint address_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint sprot_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 8          8          -                      
+        missing/total bins:                                 0          8          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/APB_coverage_pkg::APB_coverage::apb_cov_grp  
+                                                       98.41%        100          -    Uncovered            
+    covered/total bins:                                    49         50          -                      
+    missing/total bins:                                     1         50          -                      
+    % Hit:                                             98.00%        100          -                      
+    Coverpoint rst_n_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin active                                        309          1          -    Covered              
+        bin inactive                                     9692          1          -    Covered              
+        bin inactive_to_active                            299          1          -    Covered              
+        bin active_to_inactive                            300          1          -    Covered              
+    Coverpoint transfer_cp                            100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin active                                       9708          1          -    Covered              
+        bin inactive                                      293          1          -    Covered              
+        bin active_to_inactive                            278          1          -    Covered              
+        bin inactive_to_active                            279          1          -    Covered              
+    Coverpoint pslverr_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin SUCCESS                                      7827          1          -    Covered              
+        bin ERROR                                        2174          1          -    Covered              
+        bin active_to_inactive                            846          1          -    Covered              
+        bin inactive_to_active                            846          1          -    Covered              
+    Coverpoint fsm_transitions_cp                      88.88%        100          -    Uncovered            
+        covered/total bins:                                 8          9          -                      
+        missing/total bins:                                 1          9          -                      
+        % Hit:                                         88.88%        100          -                      
+        bin IDLE                                          450          1          -    Covered              
+        bin SETUP                                        4848          1          -    Covered              
+        bin ACCESS                                       4703          1          -    Covered              
+        bin IDLE_to_IDLE                                   34          1          -    Covered              
+        bin IDLE_to_SETUP                                 416          1          -    Covered              
+        bin SETUP_to_ACCESS                              4703          1          -    Covered              
+        bin ACCESS_to_SETUP                              4432          1          -    Covered              
+        bin ACCESS_to_IDLE                                271          1          -    Covered              
+        bin ACCESS_to_ACCESS                                0          1          -    ZERO                 
+    Coverpoint pstrb_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin PSTRB_SB_LSB                                  369          1          -    Covered              
+        bin PSTRB_SB_2ND                                  339          1          -    Covered              
+        bin PSTRB_SH_LSB                                  378          1          -    Covered              
+        bin PSTRB_SB_3RD                                  368          1          -    Covered              
+        bin PSTRB_SB_3RD_LSB                              359          1          -    Covered              
+        bin PSTRB_SB_2ND_3RD                              362          1          -    Covered              
+        bin PSTRB_SH_LSB_3B                               367          1          -    Covered              
+        bin PSTRB_SB_MSB                                  345          1          -    Covered              
+        bin PSTRB_SB_MSB_LSB                              359          1          -    Covered              
+        bin PSTRB_SH_MSB                                  366          1          -    Covered              
+        bin PSTRB_SH_MSB_LSB                              370          1          -    Covered              
+        bin PSTRB_SB_MSB_2ND                              359          1          -    Covered              
+        bin PSTRB_SB_MSB_3B                              1136          1          -    Covered              
+        bin PSTRB_SH_MSB_3B                              1206          1          -    Covered              
+        bin PSTRB_FULL_WORD                              2201          1          -    Covered              
+    Coverpoint address_cp                             100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin lower_half                                   5205          1          -    Covered              
+        bin upper_half                                   4796          1          -    Covered              
+        bin full_range                                  10001          1          -    Covered              
+        bin first_addr                                    335          1          -    Covered              
+        bin middle_addr                                    10          1          -    Covered              
+        bin last_addr                                       9          1          -    Covered              
+    Coverpoint sprot_cp                               100.00%        100          -    Covered              
+        covered/total bins:                                 8          8          -                      
+        missing/total bins:                                 0          8          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin normal_secure_data                           2317          1          -    Covered              
+        bin normal_nonsecure_data                        4085          1          -    Covered              
+        bin privileged_secure_data                       4085          1          -    Covered              
+        bin privileged_nonsecure_data                    4085          1          -    Covered              
+        bin normal_secure_instr                          4085          1          -    Covered              
+        bin normal_nonsecure_instr                       4085          1          -    Covered              
+        bin privileged_secure_instr                      4085          1          -    Covered              
+        bin privileged_nonsecure_instr                   1768          1          -    Covered              
+
+TOTAL COVERGROUP COVERAGE: 98.41%  COVERGROUP TYPES: 1
+
+Total Coverage By Instance (filtered view): 98.41%
+

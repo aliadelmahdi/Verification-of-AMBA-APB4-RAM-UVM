@@ -37,10 +37,10 @@
     `define CLK_PERIOD 10  // Clock period in time units
 
     // Test iterations
-    `define TEST_ITER_SMALL   100    // Small number of iterations for quick debugging
-    `define TEST_ITER_MEDIUM  1000   // Medium-sized test
-    `define TEST_ITER_LARGE   10000  // Large-scale test
-    `define TEST_ITER_STRESS  100000 // Stress test
+    `define TEST_ITER_SMALL   100    // Small number of iterations
+    `define TEST_ITER_MEDIUM  1_000   // Medium-sized test
+    `define TEST_ITER_LARGE   10_000  // Large-scale test
+    `define TEST_ITER_STRESS  100_000 // Stress test
 
     // Timescale control
     `define TIME_UNIT 1ps

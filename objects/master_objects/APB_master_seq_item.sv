@@ -1,12 +1,12 @@
 package APB_master_seq_item_pkg;
 
-    import uvm_pkg::*;
+    import uvm_pkg::*,
+           shared_pkg::*; // For enums and parameters
     `include "uvm_macros.svh"
-
     `include "apb_defines.svh" // For macros
-    import shared_pkg::*; // For enums and parameters
 
     class APB_master_seq_item extends uvm_sequence_item;
+        // RTL Design Signals
         //inputs
         rand bit SWRITE;
         rand bit [`APB_ADDR_WIDTH-1:0] SADDR; 
@@ -17,7 +17,7 @@ package APB_master_seq_item_pkg;
         rand bit PRESETn;
         logic PREADY;
         logic PSLVERR;
-
+        
         //outputs
         logic PSEL, PENABLE, PWRITE;
         logic [`APB_ADDR_WIDTH-1:0] PADDR;
@@ -25,7 +25,9 @@ package APB_master_seq_item_pkg;
         logic [`APB_STRB_WIDTH-1:0] PSTRB;
         logic [`APB_PROT_WIDTH-1:0] PPROT;
 
-        // Golden Model
+        // For debugging 
+        state_e cs;
+        // Golden Model Signals
         logic PREADY_ref;
         logic PSLVERR_ref;
         logic PSEL_ref, PENABLE_ref, PWRITE_ref;
@@ -38,6 +40,7 @@ package APB_master_seq_item_pkg;
         // Protection field variable using enums (randomized distribution)
         rand pprot_t pprot_field;
 
+        // Default Constructor
         function new(string name = "APB_master_seq_item");
             super.new(name);
         endfunction
@@ -61,7 +64,6 @@ package APB_master_seq_item_pkg;
             `uvm_field_int(PWDATA_ref, UVM_DEFAULT)
             `uvm_field_int(PSTRB_ref, UVM_DEFAULT)
             `uvm_field_int(PPROT_ref, UVM_DEFAULT)
-
         `uvm_object_utils_end
 
         constraint c_preset_distribution {
@@ -69,7 +71,7 @@ package APB_master_seq_item_pkg;
         }
         
         constraint c_transfer_active {
-            transfer dist { 1'b1 := 97, 1'b0 := 3 };
+            transfer dist { `HIGH := 97,`LOW := 3 };
         }
 
         constraint sstrb_c {
@@ -115,20 +117,20 @@ package APB_master_seq_item_pkg;
         }
         
         constraint c_protection {
-            // Privilege: 70% normal, 30% privileged.
+            // Privilege: 70% normal, 30% privileged
             pprot_field.privilege dist { NORMAL_ACCESS := 70, PRIVILEGED_ACCESS := 30 };
         
-            // Access type: 75% data access, 25% instruction access.
+            // Access type: 75% data access, 25% instruction access
             pprot_field.access dist { DATA_ACCESS := 75, INSTRUCTION_ACCESS := 25 };
         
-            // Correlate privilege and security levels.
+            // Correlate privilege and security levels
             if (pprot_field.privilege == PRIVILEGED_ACCESS) 
                 pprot_field.security dist { SECURE_ACCESS := 80, NONSECURE_ACCESS := 20 };
             else 
                 pprot_field.security dist { SECURE_ACCESS := 40, NONSECURE_ACCESS := 60 };
         
-            // Tie the protection field to the SPROT signal.
-            // The bit ordering in pprot_t is {access, security, privilege}.
+            // Tie the protection field to the SPROT signal
+            // The bit ordering in pprot_t is {access, security, privilege}
             SPROT == {pprot_field.access, pprot_field.security, pprot_field.privilege};
         }
         

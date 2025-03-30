@@ -3,29 +3,35 @@ package shared_pkg;
     // Include macros inside the package
     `include "apb_defines.svh"
     
+    // FSM ARM AMPA APB4 States
     typedef enum {IDLE, SETUP, ACCESS} state_e;
     
+    // Privilieged bit indicator
     typedef enum bit {
         NORMAL_ACCESS   = `LOW,
         PRIVILEGED_ACCESS = `HIGH
     } pprot_privilege_t;
 
+    // Security bit indicator
     typedef enum bit {
         SECURE_ACCESS   = `LOW,
         NONSECURE_ACCESS = `HIGH
     } pprot_security_t;
 
+    // Instruction bit indicator
     typedef enum bit {
         DATA_ACCESS      = `LOW,
         INSTRUCTION_ACCESS = `HIGH
     } pprot_access_type_t;
 
+    // Peripheral protection struct
     typedef struct packed {
         pprot_access_type_t access;
         pprot_security_t security;
         pprot_privilege_t privilege;
     } pprot_t;
     
+    // Define different strobe PSTRB conditions for write operations
     typedef enum logic [3:0] {
         PSTRB_SB_LSB      = 4'b0001,
         PSTRB_SB_2ND      = 4'b0010,

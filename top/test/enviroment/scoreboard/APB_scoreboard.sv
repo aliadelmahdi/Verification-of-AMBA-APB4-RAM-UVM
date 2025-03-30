@@ -1,10 +1,10 @@
 package APB_scoreboard_pkg;
-    import uvm_pkg::*,
-    APB_master_seq_item_pkg::*,
-    APB_slave_seq_item_pkg::*;
+    import  uvm_pkg::*,
+            APB_master_seq_item_pkg::*,
+            APB_slave_seq_item_pkg::*,
+            shared_pkg::*; // For enums and parameters
     
     `include "apb_defines.svh" // For macros
-    import shared_pkg::*; // For enums and parameters
 
     `include "uvm_macros.svh"
     class APB_scoreboard extends uvm_scoreboard;
@@ -19,7 +19,8 @@ package APB_scoreboard_pkg;
         APB_slave_seq_item slave_seq_item_sb;
 
         int error_count = 0, correct_count = 0;
-      
+        
+        // Default Constructor
         function new(string name = "APB_scoreboard",uvm_component parent);
             super.new(name,parent);
         endfunction
@@ -40,6 +41,7 @@ package APB_scoreboard_pkg;
             slave_sb_export.connect(apb_slave_sb.analysis_export);
         endfunction
 
+        // Run Phase
         task run_phase(uvm_phase phase);
             super.run_phase(phase);
             forever begin
@@ -49,6 +51,7 @@ package APB_scoreboard_pkg;
             end
         endtask
 
+        // Report Phase
         function void report_phase(uvm_phase phase);
             super.report_phase(phase);
             `uvm_info("report_phase",$sformatf("At time %0t: Simulation Ends and Error count= %0d, Correct count= %0d",$time,error_count,correct_count),UVM_MEDIUM);

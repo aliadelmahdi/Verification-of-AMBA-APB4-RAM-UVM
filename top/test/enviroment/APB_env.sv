@@ -25,11 +25,13 @@ package APB_env_pkg;
 
         APB_scoreboard apb_sb;
         APB_coverage apb_cov;
- 
+        
+        // Default Constructor
         function new (string name = "APB_env", uvm_component parent);
             super.new(name,parent);
         endfunction
 
+        // Build Phase
         function void build_phase(uvm_phase phase );
         super.build_phase (phase);
             apb_slave_agent = APB_slave_agent::type_id::create("apb_slave_agent",this);
@@ -38,6 +40,7 @@ package APB_env_pkg;
             apb_cov= APB_coverage::type_id::create("apb_cov",this);
         endfunction
 
+        // Connect Phase
         function void connect_phase (uvm_phase phase );
             apb_slave_agent.apb_slave_agent_ap.connect(apb_sb.slave_sb_export);
             apb_slave_agent.apb_slave_agent_ap.connect(apb_cov.slave_cov_export);

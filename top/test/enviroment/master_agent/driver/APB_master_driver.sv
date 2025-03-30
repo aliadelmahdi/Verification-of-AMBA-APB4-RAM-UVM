@@ -12,6 +12,7 @@ package APB_master_driver_pkg;
         virtual APB_if apb_if;
         APB_master_seq_item stimulus_seq_item;
 
+        // Default Constructor
         function new(string name = "APB_master_driver", uvm_component parent);
             super.new(name,parent);
         endfunction

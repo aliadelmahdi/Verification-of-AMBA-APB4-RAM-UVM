@@ -1,7 +1,7 @@
 package APB_master_main_sequence_pkg;
 
-    import uvm_pkg::*;
-    import APB_master_seq_item_pkg::*;
+    import uvm_pkg::*,
+           APB_master_seq_item_pkg::*;
     `include "uvm_macros.svh"
     `include "apb_defines.svh" // For macros
 

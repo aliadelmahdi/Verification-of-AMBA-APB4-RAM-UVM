@@ -1,12 +1,12 @@
 package APB_master_agent_pkg;
-    import uvm_pkg::*,
-        APB_master_seq_item_pkg::*,
-        APB_master_driver_pkg::*,
-        APB_master_main_sequence_pkg::*,
-        APB_master_reset_sequence_pkg::*,
-        APB_master_sequencer_pkg::*,
-        APB_master_monitor_pkg::*,
-        APB_config_pkg::*;
+    import  uvm_pkg::*,
+            APB_master_seq_item_pkg::*,
+            APB_master_driver_pkg::*,
+            APB_master_main_sequence_pkg::*,
+            APB_master_reset_sequence_pkg::*,
+            APB_master_sequencer_pkg::*,
+            APB_master_monitor_pkg::*,
+            APB_config_pkg::*;
     `include "uvm_macros.svh"
  
     class APB_master_agent extends uvm_agent;
@@ -18,10 +18,12 @@ package APB_master_agent_pkg;
         APB_config apb_master_cnfg;
         uvm_analysis_port #(APB_master_seq_item) apb_master_agent_ap;
 
+        // Default Constructor
         function new(string name = "APB_master_agent", uvm_component parent);
             super.new(name,parent);
         endfunction
 
+        // Build Phase
         function void build_phase(uvm_phase phase);
             super.build_phase(phase);
 
@@ -34,6 +36,7 @@ package APB_master_agent_pkg;
             apb_master_agent_ap = new("apb_master_agent_ap",this);
         endfunction
 
+        // Connect Phase
         function void connect_phase(uvm_phase phase);
             apb_master_drv.apb_if = apb_master_cnfg.apb_if;
             apb_master_mon.apb_if = apb_master_cnfg.apb_if;

@@ -47,6 +47,7 @@ package APB_master_monitor_pkg;
                 master_response_seq_item.PRESETn = apb_if.PRESETn;
                 master_response_seq_item.PREADY = apb_if.PREADY;
                 master_response_seq_item.PSLVERR = apb_if.PSLVERR;
+                master_response_seq_item.cs = apb_if.cs;
                 //Golden model
                 master_response_seq_item.PENABLE_ref = apb_if.PENABLE_ref;
                 master_response_seq_item.PSEL_ref = apb_if.PSEL_ref;
