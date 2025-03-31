@@ -71,7 +71,7 @@ package APB_master_seq_item_pkg;
         }
         
         constraint c_transfer_active {
-            transfer dist { `HIGH := 97,`LOW := 3 };
+            transfer dist { `HIGH := 60,`LOW := 40 };
         }
 
         constraint sstrb_c {
@@ -138,14 +138,14 @@ package APB_master_seq_item_pkg;
         constraint c_wdata_biased {
             SWDATA dist {
                 `WDATA_ALL_ZERO := 5,   
-                `WDATA_ALL_ONE  := 10,   
-                `WDATA_ALT_1010 := 5,    
-                `WDATA_ALT_0101 := 5,    
-                [32'h0000_0001 : 32'h7FFF_FFFF] := 35, 
-                [32'h8000_0000 : 32'hFFFF_FFFE] := 40  
+                `WDATA_ALL_ONE  := 20,   
+                `WDATA_ALT_1010 := 20,    
+                `WDATA_ALT_0101 := 20,    
+                [32'h0000_0001 : 32'h7FFF_FFFF] :/ 35, 
+                [32'h8000_0000 : 32'hFFFF_FFFE] :/ 35  
             };
         }
-        
+    
         constraint c_swrite_biased {
             SWRITE dist {
                 `WRITE := `WRITE_PROB,  

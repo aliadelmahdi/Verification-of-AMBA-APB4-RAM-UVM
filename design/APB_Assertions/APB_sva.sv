@@ -72,10 +72,10 @@ module APB_sva(
     endproperty
     
     idle_to_setup_assert: assert property (idle_to_setup_check) 
-        else $fatal("FSM did not transition from IDLE to SETUP correctly when transfer was asserted");
+        else $error("FSM did not transition from IDLE to SETUP correctly when transfer was asserted");
     
     idle_hold_assert: assert property (idle_hold_check) 
-        else $fatal("FSM incorrectly left IDLE when transfer was not asserted");
+        else $error("FSM incorrectly left IDLE when transfer was not asserted");
     
     // 2.3: Transition from SETUP to ACCESS
     property setup_to_access_check;
@@ -84,7 +84,7 @@ module APB_sva(
     endproperty
 
     setup_to_access_assert: assert property (setup_to_access_check)
-        else $fatal("FSM did not transition from SETUP to ACCESS correctly after one clock cycle");
+        else $error("FSM did not transition from SETUP to ACCESS correctly after one clock cycle");
 
     // 2.4: Transition from ACESS to SETUP
     property access_to_setup_check;
@@ -98,10 +98,10 @@ module APB_sva(
     endproperty
 
     access_to_setup_assert: assert property (access_to_setup_check)
-        else $fatal("FSM did not correctly transition from ACCESS to SETUP when PREADY and transfer were asserted");
+        else $error("FSM did not correctly transition from ACCESS to SETUP when PREADY and transfer were asserted");
 
     illegal_access_to_setup_assert: assert property (illegal_access_to_setup_check)
-        else $fatal("FSM incorrectly left ACCESS when either PREADY or transfer was deasserted");
+        else $error("FSM incorrectly left ACCESS when either PREADY or transfer was deasserted");
 
     // 2.5: Transition from ACCESS to IDLE
     property access_to_idle_check;
@@ -115,10 +115,10 @@ module APB_sva(
     endproperty
 
     access_to_idle_assert: assert property (access_to_idle_check)
-        else $fatal("FSM did not correctly transition from ACCESS to IDLE when PREADY and transfer were asserted");
+        else $error("FSM did not correctly transition from ACCESS to IDLE when PREADY and transfer were asserted");
 
     illegal_access_to_idle_assert: assert property (illegal_access_to_idle_check)
-        else $fatal("FSM incorrectly left ACCESS and went to IDLE when the condition PREADY && !transfer was not HIGH");
+        else $error("FSM incorrectly left ACCESS and went to IDLE when the condition PREADY && !transfer was not HIGH");
     
     // 2.6: Peripheral signals at IDLE state
     property peripheral_signals_idle_check;
@@ -152,5 +152,31 @@ module APB_sva(
 
     peripheral_signals_access_assert: assert property (peripheral_signals_access_check)
         else $error("Failed to assert PSEL & PENABLE");
-        
+    
+    //** Read & Write Operations **\\
+
+    // Write Operation
+    property write_op_check;
+        @(posedge PCLK) disable iff (!PRESETn)
+           (cs == ACCESS && SWRITE == `WRITE) |=> (!PSLVERR)
+    endproperty
+    write_op_cover: cover property (write_op_check);
+
+    // Read Operation
+    property read_op_check;
+        @(posedge PCLK) disable iff (!PRESETn)
+        (cs == ACCESS && SWRITE == `READ) |=> (!PSLVERR)
+    endproperty
+    read_op_cover: cover property (read_op_check);
+
+    //** 5: System flags **\\
+
+    // 5.3: Peripheral Ready Signal
+    property pready_check;
+        @(posedge PCLK) disable iff (!PRESETn)
+            (PSEL && PENABLE) |-> (PREADY);
+    endproperty
+
+    pready_assert: assert property (pready_check)
+        else $error("Error: Failed to assert PREADY");
 endmodule

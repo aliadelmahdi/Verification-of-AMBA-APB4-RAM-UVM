@@ -44,12 +44,7 @@ package APB_coverage_pkg;
                 bins active_to_inactive = (`HIGH=>`LOW);
                 bins inactive_to_active = (`LOW=>`HIGH);
             }
-            pslverr_cp: coverpoint master_seq_item_cov.PSLVERR{
-                bins SUCCESS = {`LOW};
-                bins ERROR = {`HIGH};
-                bins active_to_inactive = (`HIGH=>`LOW);
-                bins inactive_to_active = (`LOW=>`HIGH);
-            }
+           
             fsm_transitions_cp: coverpoint master_seq_item_cov.cs{
                 // Cover States
                 bins IDLE   = {IDLE};
@@ -61,8 +56,29 @@ package APB_coverage_pkg;
                 bins SETUP_to_ACCESS  = (SETUP=>ACCESS);
                 bins ACCESS_to_SETUP  = (ACCESS=>SETUP);
                 bins ACCESS_to_IDLE   = (ACCESS=>IDLE);
-                bins ACCESS_to_ACCESS = (ACCESS=>ACCESS);
             }
+           
+            address_cp: coverpoint slave_seq_item_cov.PADDR {
+                bins lower_half  = { [0 : (`MEM_DEPTH/2 - 1)] }; 
+                bins upper_half  = { [`MEM_DEPTH/2 : `MEM_DEPTH-1] };
+                bins full_range  = { [0 : `MEM_DEPTH-1] };
+            
+                // Explicit boundary bins
+                bins first_addr  = {0};
+                bins middle_addr = {`MEM_DEPTH/2};
+                bins last_addr   = {`MEM_DEPTH-1};
+            }
+            
+            
+            pslverr_cp: coverpoint master_seq_item_cov.PSLVERR{
+                bins SUCCESS = {`LOW};
+                bins ERROR = {`HIGH};
+                bins active_to_inactive = (`HIGH=>`LOW);
+                bins inactive_to_active = (`LOW=>`HIGH);
+            }
+        endgroup
+
+        covergroup apb_write_cov_grp;
             pstrb_cp: coverpoint slave_seq_item_cov.PSTRB{
                 bins PSTRB_SB_LSB     = {PSTRB_SB_LSB};
                 bins PSTRB_SB_2ND     = {PSTRB_SB_2ND};
@@ -80,17 +96,29 @@ package APB_coverage_pkg;
                 bins PSTRB_SH_MSB_3B  = {PSTRB_SH_MSB_3B};
                 bins PSTRB_FULL_WORD  = {PSTRB_FULL_WORD};
             }
-            address_cp: coverpoint slave_seq_item_cov.PADDR {
-                bins lower_half  = { [0 : (`MEM_DEPTH/2 - 1)] }; 
-                bins upper_half  = { [`MEM_DEPTH/2 : `MEM_DEPTH-1] };
-                bins full_range  = { [0 : `MEM_DEPTH-1] };
-            
-                // Explicit boundary bins
-                bins first_addr  = {0};
-                bins middle_addr = {`MEM_DEPTH/2};
-                bins last_addr   = {`MEM_DEPTH-1};
+            pslverr_cp: coverpoint master_seq_item_cov.PSLVERR{
+                bins SUCCESS = {`LOW};
             }
-            
+
+            write_data_cp: coverpoint slave_seq_item_cov.PWDATA {
+                bins all_zero   = {`WDATA_ALL_ZERO};
+                bins all_one    = {`WDATA_ALL_ONE};
+                bins alt_1010   = {`WDATA_ALT_1010};
+                bins alt_0101   = {`WDATA_ALT_0101};
+                // fixed number of automatic bins
+                bins low_range [20]= {[32'h0000_0001 : 32'h7FFF_FFFF]};
+                // fixed number of automatic bins
+                bins high_range [20] = {[32'h80000000 : 32'hFFFF_FFFE]};
+            }
+        
+            write_op_cr: cross write_data_cp, pslverr_cp {
+                bins no_error = binsof(write_data_cp) intersect {`WDATA_ALL_ZERO, `WDATA_ALL_ONE, `WDATA_ALT_1010, `WDATA_ALT_0101} &&
+                                binsof(pslverr_cp.SUCCESS);
+                bins low_range_no_error  = binsof(write_data_cp.low_range)  && binsof(pslverr_cp.SUCCESS);
+                bins high_range_no_error = binsof(write_data_cp.high_range) && binsof(pslverr_cp.SUCCESS);
+        
+                option.cross_auto_bin_max = 0;
+            }
             sprot_cp: coverpoint slave_seq_item_cov.PPROT {
                 // Cover different protection levels
                 bins normal_secure_data   = { NORMAL_ACCESS, SECURE_ACCESS, DATA_ACCESS };
@@ -102,12 +130,68 @@ package APB_coverage_pkg;
                 bins privileged_secure_instr = { PRIVILEGED_ACCESS, SECURE_ACCESS, INSTRUCTION_ACCESS };
                 bins privileged_nonsecure_instr = { PRIVILEGED_ACCESS, NONSECURE_ACCESS, INSTRUCTION_ACCESS };    
             }
-            
         endgroup
+
+        covergroup apb_read_cov_grp;
+            pslverr_cp: coverpoint master_seq_item_cov.PSLVERR{
+                bins SUCCESS = {`LOW};
+                bins ERROR = {`HIGH};
+            }
+
+            read_data_cp: coverpoint slave_seq_item_cov.PRDATA {
+                bins all_zero   = {`WDATA_ALL_ZERO};
+                bins all_one    = {`WDATA_ALL_ONE};
+                bins alt_1010   = {`WDATA_ALT_1010};
+                bins alt_0101   = {`WDATA_ALT_0101};
+                // fixed number of automatic bins
+                bins low_range [20]= {[32'h0000_0001 : 32'h7FFF_FFFF]};
+                // fixed number of automatic bins
+                bins high_range [20] = {[32'h80000000 : 32'hFFFF_FFFE]};
+            }
+        
+            read_op_cr: cross read_data_cp, pslverr_cp {
+                bins no_error = binsof(read_data_cp) intersect {`WDATA_ALL_ZERO, `WDATA_ALL_ONE, `WDATA_ALT_1010, `WDATA_ALT_0101} &&
+                                binsof(pslverr_cp.SUCCESS);
+                bins low_range_no_error  = binsof(read_data_cp.low_range)  && binsof(pslverr_cp.SUCCESS);
+                bins high_range_no_error = binsof(read_data_cp.high_range) && binsof(pslverr_cp.SUCCESS);
+        
+                option.cross_auto_bin_max = 0;
+            }
+        endgroup
+
+        covergroup apb_write_read_cov_grp;
+            addr_cp: coverpoint slave_seq_item_cov.PADDR {
+                bins per_address[] = {[32'h0000_0001 : 32'hFFFF_FFFE]};
+            }
+        
+            write_data_cp: coverpoint slave_seq_item_cov.PWDATA {
+                bins all_one    = {`WDATA_ALL_ONE};
+                bins alt_1010   = {`WDATA_ALT_1010};
+                bins alt_0101   = {`WDATA_ALT_0101};
+            }
+        
+            read_data_cp: coverpoint slave_seq_item_cov.PRDATA {
+                bins all_one    = {`WDATA_ALL_ONE};
+                bins alt_1010   = {`WDATA_ALT_1010};
+                bins alt_0101   = {`WDATA_ALT_0101};
+            }
+        
+            write_read_cr: cross addr_cp, write_data_cp, read_data_cp {
+                bins matched_write_read = binsof(addr_cp) && binsof(write_data_cp) && binsof(read_data_cp);
+                option.cross_auto_bin_max = 0;
+            }
+        
+        endgroup
+
+
         // Constructor
         function new (string name = "APB_coverage", uvm_component parent);
             super.new(name, parent);
             apb_cov_grp = new();
+            apb_write_cov_grp = new();
+            apb_read_cov_grp = new();
+            apb_write_read_cov_grp = new();
+
         endfunction
 
         // Build Phase
@@ -134,6 +218,15 @@ package APB_coverage_pkg;
                 master_cov_apb.get(master_seq_item_cov);
                 slave_cov_apb.get(slave_seq_item_cov);
                 apb_cov_grp.sample();
+                if (slave_seq_item_cov.PWRITE && master_seq_item_cov.cs == ACCESS) begin
+                    apb_write_cov_grp.sample();
+                end
+                if (!slave_seq_item_cov.PWRITE && master_seq_item_cov.cs == ACCESS) begin
+                    apb_read_cov_grp.sample();
+                end
+                if (master_seq_item_cov.cs == ACCESS) begin
+                    apb_write_read_cov_grp.sample();
+                end
             end
         endtask
 

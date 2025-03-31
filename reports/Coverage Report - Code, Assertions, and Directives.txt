@@ -7,7 +7,7 @@ Coverage Report by instance with details
 Branch Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
     ----------------              ----      ----    ------  --------
-    Branches                        17        16         1    94.11%
+    Branches                        16        16         0   100.00%
 
 ================================Branch Details================================
 
@@ -17,51 +17,50 @@ Branch Coverage for instance /\tb_top#DUT /Master
     ----         ----                      -----     ------ 
   File design/APB_design/APB_Master.v
 ------------------------------------IF Branch------------------------------------
-    35                                     10292     Count coming in to IF
-    35              1                        601             if(~PRESETn) 
-    37              1                       9691             else 
+    35                                     98850     Count coming in to IF
+    35              1                       5990             if(~PRESETn) 
+    37              1                      92860             else 
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------CASE Branch------------------------------------
-    43                                     19932     Count coming in to CASE
-    44              1                        693                 IDLE : begin
-    50              1                       9428                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
-    51              1                       9809                 ACCESS : begin
+    43                                    208037     Count coming in to CASE
+    44              1                      46188                 IDLE : begin
+    50              1                      72197                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
+    51              1                      89650                 ACCESS : begin
     59              1                          2                 default : ns = IDLE;
 Branch totals: 4 hits of 4 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    45                                       693     Count coming in to IF
-    45              1                        431                     if(transfer)
-    47              1                        262                     else
+    45                                     46188     Count coming in to IF
+    45              1                      16808                     if(transfer)
+    47              1                      29380                     else
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    52                                      9809     Count coming in to IF
-    52              1                        259                     if(PREADY && !transfer)
-    54              1                       4696                     else if(PREADY && transfer)
-    56              1                       4854                     else
+    52                                     89650     Count coming in to IF
+    52              1                      22877                     if(PREADY && !transfer)
+    54              1                      29995                     else if(PREADY && transfer)
+    56              1                      36778                     else
 Branch totals: 3 hits of 3 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    65                                     19968     Count coming in to IF
-    65              1                        605             if(~PRESETn)
-    75              1                      19363             else begin
+    65                                    188546     Count coming in to IF
+    65              1                       5289             if(~PRESETn)
+    75              1                     183257             else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------CASE Branch------------------------------------
-    76                                     19363     Count coming in to CASE
-    77              1                        557                     IDLE : begin
-    81              1                       9551                     SETUP : begin
-    90              1                       9255                     ACCESS : begin
-                                         ***0***     All False Count
-Branch totals: 3 hits of 4 branches = 75.00%
+    76                                    183257     Count coming in to CASE
+    77              1                      40554                     IDLE : begin
+    81              1                      72463                     SETUP : begin
+    90              1                      70240                     ACCESS : begin
+Branch totals: 3 hits of 3 branches = 100.00%
 
 
 Condition Coverage:
     Enabled Coverage              Bins   Covered    Misses  Coverage
     ----------------              ----      ----    ------  --------
-    Conditions                       4         3         1    75.00%
+    Conditions                       2         2         0   100.00%
 
 ================================Condition Details================================
 
@@ -82,22 +81,6 @@ Condition totals: 2 of 2 input terms covered = 100.00%
   Row   1:          1  PREADY_0              -                             
   Row   2:          1  PREADY_1              ~transfer                     
   Row   3:          1  transfer_0            PREADY                        
-  Row   4:          1  transfer_1            PREADY                        
-
-----------------Focused Condition View-------------------
-Line       54 Item    1  (PREADY && transfer)
-Condition totals: 1 of 2 input terms covered = 50.00%
-
-  Input Term   Covered  Reason for no coverage   Hint
- -----------  --------  -----------------------  --------------
-      PREADY         Y
-    transfer         N  '_0' not hit             Hit '_0'
-
-     Rows:       Hits  FEC Target            Non-masking condition(s)      
- ---------  ---------  --------------------  -------------------------     
-  Row   1:          1  PREADY_0              -                             
-  Row   2:          1  PREADY_1              transfer                      
-  Row   3:    ***0***  transfer_0            PREADY                        
   Row   4:          1  transfer_1            PREADY                        
 
 
@@ -125,18 +108,18 @@ Line          State Name               Value
     ----------------
                    State           Hit_count
                    -----           ---------
-                    IDLE                 741          
-                   SETUP                4848          
-                  ACCESS                4703          
+                    IDLE               26387          
+                   SETUP               36790          
+                  ACCESS               35673          
     Covered Transitions :
     ---------------------
 Line            Trans_ID           Hit_count          Transition          
 ----            --------           ---------          ----------          
-  46                   0                 416          IDLE -> SETUP                 
-  50                   1                4703          SETUP -> ACCESS               
-  36                   2                 144          SETUP -> IDLE                 
-  55                   3                4432          ACCESS -> SETUP               
-  53                   4                 271          ACCESS -> IDLE                
+  46                   0               16083          IDLE -> SETUP                 
+  50                   1               35673          SETUP -> ACCESS               
+  36                   2                1116          SETUP -> IDLE                 
+  55                   3               20707          ACCESS -> SETUP               
+  53                   4               14966          ACCESS -> IDLE                
 
 
     Summary                       Bins      Hits    Misses  Coverage
@@ -184,66 +167,66 @@ Statement Coverage for instance /\tb_top#DUT /Master --
     30                                                   reg [1:0] ns, cs ; //next state, current state
     31                                               
     32                                                   //state memory 
-    33              1                      10292         always @(posedge PCLK, negedge PRESETn)
+    33              1                      98850         always @(posedge PCLK, negedge PRESETn)
     34                                                   begin
     35                                                       if(~PRESETn) 
-    36              1                        601                 cs <= IDLE;
+    36              1                       5990                 cs <= IDLE;
     37                                                       else 
-    38              1                       9691                 cs <= ns;
+    38              1                      92860                 cs <= ns;
     39                                                   end
     40                                               
     41                                                   //next state logic
-    42              1                      19932         always @(*) begin
+    42              1                     208037         always @(*) begin
     43                                                       case(cs)
     44                                                           IDLE : begin
     45                                                               if(transfer)
-    46              1                        431                         ns = SETUP;
+    46              1                      16808                         ns = SETUP;
     47                                                               else
-    48              1                        262                         ns = IDLE;
+    48              1                      29380                         ns = IDLE;
     49                                                           end
-    50              1                       9428                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
+    50              1                      72197                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
     51                                                           ACCESS : begin
     52                                                               if(PREADY && !transfer)
-    53              1                        259                         ns = IDLE;
+    53              1                      22877                         ns = IDLE;
     54                                                               else if(PREADY && transfer)
-    55              1                       4696                         ns = SETUP;
+    55              1                      29995                         ns = SETUP;
     56                                                               else
-    57              1                       4854                         ns = ACCESS;
+    57              1                      36778                         ns = ACCESS;
     58                                                           end
     59              1                          2                 default : ns = IDLE;
     60                                                       endcase
     61                                                   end
     62                                               
     63                                                   //output logic
-    64              1                      19968         always @(*) begin
+    64              1                     188546         always @(*) begin
     65                                                       if(~PRESETn)
     66                                                           begin
-    67              1                        605                     PSEL = 0;
-    68              1                        605                     PENABLE = 0;
-    69              1                        605                     PWRITE = 0;
-    70              1                        605                     PADDR = 0;
-    71              1                        605                     PWDATA = 0;
-    72              1                        605                     PSTRB = 0;
-    73              1                        605                     PPROT = 0;
+    67              1                       5289                     PSEL = 0;
+    68              1                       5289                     PENABLE = 0;
+    69              1                       5289                     PWRITE = 0;
+    70              1                       5289                     PADDR = 0;
+    71              1                       5289                     PWDATA = 0;
+    72              1                       5289                     PSTRB = 0;
+    73              1                       5289                     PPROT = 0;
     74                                                           end
     75                                                       else begin
     76                                                           case(cs)
     77                                                               IDLE : begin
-    78              1                        557                         PSEL = 0;
-    79              1                        557                         PENABLE = 0;
+    78              1                      40554                         PSEL = 0;
+    79              1                      40554                         PENABLE = 0;
     80                                                               end
     81                                                               SETUP : begin
-    82              1                       9551                         PSEL = 1;
-    83              1                       9551                         PENABLE = 0;   //signals are sent to slave in setup state
-    84              1                       9551                         PWRITE = SWRITE;
-    85              1                       9551                         PADDR = SADDR;
-    86              1                       9551                         PWDATA = SWDATA;
-    87              1                       9551                         PSTRB = SSTRB;
-    88              1                       9551                         PPROT = SPROT;
+    82              1                      72463                         PSEL = 1;
+    83              1                      72463                         PENABLE = 0;   //signals are sent to slave in setup state
+    84              1                      72463                         PWRITE = SWRITE;
+    85              1                      72463                         PADDR = SADDR;
+    86              1                      72463                         PWDATA = SWDATA;
+    87              1                      72463                         PSTRB = SSTRB;
+    88              1                      72463                         PPROT = SPROT;
     89                                                               end
     90                                                               ACCESS : begin
-    91              1                       9255                         PSEL = 1;
-    92              1                       9255                         PENABLE = 1;
+    91              1                      70240                         PSEL = 1;
+    92              1                      70240                         PENABLE = 1;
 
 Toggle Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
@@ -299,42 +282,42 @@ Branch Coverage for instance /\tb_top#DUT /Slave
     ----         ----                      -----     ------ 
   File design/APB_design/APB_Slave.v
 ------------------------------------IF Branch------------------------------------
-    23                                      9725     Count coming in to IF
-    23              1                        304             if (~PRESETn) begin
-    27              1                       9005             else if (PSEL) begin  // Access state when PSEL is high
-                                             416     All False Count
+    23                                     87645     Count coming in to IF
+    23              1                       3024             if (~PRESETn) begin
+    27              1                      68188             else if (PSEL) begin  // Access state when PSEL is high
+                                           16433     All False Count
 Branch totals: 3 hits of 3 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    29                                      9005     Count coming in to IF
-    29              1                       6512                 if (PWRITE) begin     
-    51              1                       2493                 else begin
+    29                                     68188     Count coming in to IF
+    29              1                      49186                 if (PWRITE) begin     
+    51              1                      19002                 else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------CASE Branch------------------------------------
-    30                                      6512     Count coming in to CASE
-    31              1                        228                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
-    32              1                        193                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
-    33              1                        185                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
-    34              1                        207                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
-    35              1                        210                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
-    36              1                        184                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
-    37              1                        184                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
-    38              1                        176                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
-    39              1                        193                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
-    40              1                        234                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
-    41              1                        235                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
-    42              1                        166                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
-    43              1                        925                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
-    44              1                       1019                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
-    45              1                       1997                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
-    46              1                        176                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
+    30                                     49186     Count coming in to CASE
+    31              1                       1514                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
+    32              1                       1384                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
+    33              1                       1457                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
+    34              1                       1495                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
+    35              1                       1526                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
+    36              1                       1547                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
+    37              1                       1427                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
+    38              1                       1525                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
+    39              1                       1450                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
+    40              1                       1485                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
+    41              1                       1557                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
+    42              1                       1555                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
+    43              1                       7560                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
+    44              1                       7315                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
+    45              1                      14926                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
+    46              1                       1463                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
 Branch totals: 16 hits of 16 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    52                                      2493     Count coming in to IF
-    52              1                       1907                     if (PSTRB != 0)
-    54              1                        586                     else begin
+    52                                     19002     Count coming in to IF
+    52              1                      14666                     if (PSTRB != 0)
+    54              1                       4336                     else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 
@@ -391,41 +374,41 @@ Statement Coverage for instance /\tb_top#DUT /Slave --
     19                                                   // Define memory using the MEM_WIDTH and MEM_DEPTH from `defines`
     20                                                   reg [MEM_WIDTH-1:0] Cache [MEM_DEPTH-1:0];
     21                                               
-    22              1                       9725         always @ (posedge PCLK) begin
+    22              1                      87645         always @ (posedge PCLK) begin
     23                                                       if (~PRESETn) begin
-    24              1                        304                 PSLVERR <= 0;
-    25              1                        304                 PRDATA <= 0;
+    24              1                       3024                 PSLVERR <= 0;
+    25              1                       3024                 PRDATA <= 0;
     26                                                       end
     27                                                       else if (PSEL) begin  // Access state when PSEL is high
     28                                                           // Writing stage
     29                                                           if (PWRITE) begin     
     30                                                             case (PSTRB)
-    31              1                        228                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
-    32              1                        193                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
-    33              1                        185                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
-    34              1                        207                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
-    35              1                        210                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
-    36              1                        184                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
-    37              1                        184                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
-    38              1                        176                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
-    39              1                        193                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
-    40              1                        234                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
-    41              1                        235                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
-    42              1                        166                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
-    43              1                        925                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
-    44              1                       1019                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
-    45              1                       1997                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
-    46              1                        176                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
+    31              1                       1514                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
+    32              1                       1384                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
+    33              1                       1457                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
+    34              1                       1495                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
+    35              1                       1526                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
+    36              1                       1547                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
+    37              1                       1427                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
+    38              1                       1525                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
+    39              1                       1450                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
+    40              1                       1485                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
+    41              1                       1557                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
+    42              1                       1555                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
+    43              1                       7560                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
+    44              1                       7315                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
+    45              1                      14926                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
+    46              1                       1463                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
     47                                                           endcase
-    48              1                       6512                     PSLVERR <= 0;
+    48              1                      49186                     PSLVERR <= 0;
     49                                                           end
     50                                                           // Reading stage
     51                                                           else begin
     52                                                               if (PSTRB != 0)
-    53              1                       1907                         PSLVERR <= 1;  // PSTRB must remain low when reading
+    53              1                      14666                         PSLVERR <= 1;  // PSTRB must remain low when reading
     54                                                               else begin
-    55              1                        586                         PRDATA <= Cache[PADDR];
-    56              1                        586                         PSLVERR <= 0;
+    55              1                       4336                         PRDATA <= Cache[PADDR];
+    56              1                       4336                         PSLVERR <= 0;
 
 Toggle Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
@@ -463,50 +446,67 @@ Toggle Coverage      =     100.00% (176 of 176 bins)
 =================================================================================
 
 Assertion Coverage:
-    Assertions                      13        13         0   100.00%
+    Assertions                      14        14         0   100.00%
 --------------------------------------------------------------------
 Name                 File(Line)                   Failure      Pass 
                                                   Count        Count
 --------------------------------------------------------------------
 /\tb_top#DUT /APB_sva_inst/reset_master_assert
-                     design/APB_Assertions/APB_sva.sv(54)
+                     design/APB_Assertions/APB_sva.sv(52)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/reset_slave_assert
-                     design/APB_Assertions/APB_sva.sv(57)
+                     design/APB_Assertions/APB_sva.sv(55)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/reset_fsm_assert
-                     design/APB_Assertions/APB_sva.sv(60)
+                     design/APB_Assertions/APB_sva.sv(58)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/idle_to_setup_assert
-                     design/APB_Assertions/APB_sva.sv(76)
+                     design/APB_Assertions/APB_sva.sv(74)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/idle_hold_assert
-                     design/APB_Assertions/APB_sva.sv(79)
+                     design/APB_Assertions/APB_sva.sv(77)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/setup_to_access_assert
-                     design/APB_Assertions/APB_sva.sv(88)
+                     design/APB_Assertions/APB_sva.sv(86)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/access_to_setup_assert
-                     design/APB_Assertions/APB_sva.sv(102)
+                     design/APB_Assertions/APB_sva.sv(100)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/illegal_access_to_setup_assert
-                     design/APB_Assertions/APB_sva.sv(105)
+                     design/APB_Assertions/APB_sva.sv(103)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/access_to_idle_assert
-                     design/APB_Assertions/APB_sva.sv(119)
+                     design/APB_Assertions/APB_sva.sv(117)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/illegal_access_to_idle_assert
-                     design/APB_Assertions/APB_sva.sv(122)
+                     design/APB_Assertions/APB_sva.sv(120)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/peripheral_signals_idle_assert
-                     design/APB_Assertions/APB_sva.sv(131)
+                     design/APB_Assertions/APB_sva.sv(129)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/peripheral_signals_setup_assert
-                     design/APB_Assertions/APB_sva.sv(146)
+                     design/APB_Assertions/APB_sva.sv(144)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/peripheral_signals_access_assert
-                     design/APB_Assertions/APB_sva.sv(155)
+                     design/APB_Assertions/APB_sva.sv(153)
                                                         0          1
+/\tb_top#DUT /APB_sva_inst/pready_assert
+                     design/APB_Assertions/APB_sva.sv(180)
+                                                        0          1
+
+Directive Coverage:
+    Directives                       2         2         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\tb_top#DUT /APB_sva_inst/write_op_cover 
+                                         APB_sva Verilog  SVA  design/APB_Assertions/APB_sva.sv(163)
+                                                                              17886 Covered   
+/\tb_top#DUT /APB_sva_inst/read_op_cover APB_sva Verilog  SVA  design/APB_Assertions/APB_sva.sv(170)
+                                                                              7824 Covered   
 Toggle Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
     ----------------              ----      ----    ------  --------
@@ -592,7 +592,7 @@ Toggle Coverage      =     100.00% (278 of 278 bins)
 Branch Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
     ----------------              ----      ----    ------  --------
-    Branches                        17        16         1    94.11%
+    Branches                        16        16         0   100.00%
 
 ================================Branch Details================================
 
@@ -602,51 +602,50 @@ Branch Coverage for instance /\tb_top#DUT#Master
     ----         ----                      -----     ------ 
   File design/APB_design/APB_Master.v
 ------------------------------------IF Branch------------------------------------
-    35                                     10292     Count coming in to IF
-    35              1                        601             if(~PRESETn) 
-    37              1                       9691             else 
+    35                                     98850     Count coming in to IF
+    35              1                       5990             if(~PRESETn) 
+    37              1                      92860             else 
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------CASE Branch------------------------------------
-    43                                     19932     Count coming in to CASE
-    44              1                        693                 IDLE : begin
-    50              1                       9428                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
-    51              1                       9809                 ACCESS : begin
+    43                                    208037     Count coming in to CASE
+    44              1                      46188                 IDLE : begin
+    50              1                      72197                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
+    51              1                      89650                 ACCESS : begin
     59              1                          2                 default : ns = IDLE;
 Branch totals: 4 hits of 4 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    45                                       693     Count coming in to IF
-    45              1                        431                     if(transfer)
-    47              1                        262                     else
+    45                                     46188     Count coming in to IF
+    45              1                      16808                     if(transfer)
+    47              1                      29380                     else
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    52                                      9809     Count coming in to IF
-    52              1                        259                     if(PREADY && !transfer)
-    54              1                       4696                     else if(PREADY && transfer)
-    56              1                       4854                     else
+    52                                     89650     Count coming in to IF
+    52              1                      22877                     if(PREADY && !transfer)
+    54              1                      29995                     else if(PREADY && transfer)
+    56              1                      36778                     else
 Branch totals: 3 hits of 3 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    65                                     19968     Count coming in to IF
-    65              1                        605             if(~PRESETn)
-    75              1                      19363             else begin
+    65                                    188546     Count coming in to IF
+    65              1                       5289             if(~PRESETn)
+    75              1                     183257             else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------CASE Branch------------------------------------
-    76                                     19363     Count coming in to CASE
-    77              1                        557                     IDLE : begin
-    81              1                       9551                     SETUP : begin
-    90              1                       9255                     ACCESS : begin
-                                         ***0***     All False Count
-Branch totals: 3 hits of 4 branches = 75.00%
+    76                                    183257     Count coming in to CASE
+    77              1                      40554                     IDLE : begin
+    81              1                      72463                     SETUP : begin
+    90              1                      70240                     ACCESS : begin
+Branch totals: 3 hits of 3 branches = 100.00%
 
 
 Condition Coverage:
     Enabled Coverage              Bins   Covered    Misses  Coverage
     ----------------              ----      ----    ------  --------
-    Conditions                       4         3         1    75.00%
+    Conditions                       2         2         0   100.00%
 
 ================================Condition Details================================
 
@@ -667,22 +666,6 @@ Condition totals: 2 of 2 input terms covered = 100.00%
   Row   1:          1  PREADY_0              -                             
   Row   2:          1  PREADY_1              ~transfer                     
   Row   3:          1  transfer_0            PREADY                        
-  Row   4:          1  transfer_1            PREADY                        
-
-----------------Focused Condition View-------------------
-Line       54 Item    1  (PREADY && transfer)
-Condition totals: 1 of 2 input terms covered = 50.00%
-
-  Input Term   Covered  Reason for no coverage   Hint
- -----------  --------  -----------------------  --------------
-      PREADY         Y
-    transfer         N  '_0' not hit             Hit '_0'
-
-     Rows:       Hits  FEC Target            Non-masking condition(s)      
- ---------  ---------  --------------------  -------------------------     
-  Row   1:          1  PREADY_0              -                             
-  Row   2:          1  PREADY_1              transfer                      
-  Row   3:    ***0***  transfer_0            PREADY                        
   Row   4:          1  transfer_1            PREADY                        
 
 
@@ -710,18 +693,18 @@ Line          State Name               Value
     ----------------
                    State           Hit_count
                    -----           ---------
-                    IDLE                 741          
-                   SETUP                4848          
-                  ACCESS                4703          
+                    IDLE               26387          
+                   SETUP               36790          
+                  ACCESS               35673          
     Covered Transitions :
     ---------------------
 Line            Trans_ID           Hit_count          Transition          
 ----            --------           ---------          ----------          
-  46                   0                 416          IDLE -> SETUP                 
-  50                   1                4703          SETUP -> ACCESS               
-  36                   2                 144          SETUP -> IDLE                 
-  55                   3                4432          ACCESS -> SETUP               
-  53                   4                 271          ACCESS -> IDLE                
+  46                   0               16083          IDLE -> SETUP                 
+  50                   1               35673          SETUP -> ACCESS               
+  36                   2                1116          SETUP -> IDLE                 
+  55                   3               20707          ACCESS -> SETUP               
+  53                   4               14966          ACCESS -> IDLE                
 
 
     Summary                       Bins      Hits    Misses  Coverage
@@ -769,66 +752,66 @@ Statement Coverage for instance /\tb_top#DUT#Master  --
     30                                                   reg [1:0] ns, cs ; //next state, current state
     31                                               
     32                                                   //state memory 
-    33              1                      10292         always @(posedge PCLK, negedge PRESETn)
+    33              1                      98850         always @(posedge PCLK, negedge PRESETn)
     34                                                   begin
     35                                                       if(~PRESETn) 
-    36              1                        601                 cs <= IDLE;
+    36              1                       5990                 cs <= IDLE;
     37                                                       else 
-    38              1                       9691                 cs <= ns;
+    38              1                      92860                 cs <= ns;
     39                                                   end
     40                                               
     41                                                   //next state logic
-    42              1                      19932         always @(*) begin
+    42              1                     208037         always @(*) begin
     43                                                       case(cs)
     44                                                           IDLE : begin
     45                                                               if(transfer)
-    46              1                        431                         ns = SETUP;
+    46              1                      16808                         ns = SETUP;
     47                                                               else
-    48              1                        262                         ns = IDLE;
+    48              1                      29380                         ns = IDLE;
     49                                                           end
-    50              1                       9428                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
+    50              1                      72197                 SETUP : ns = ACCESS; //The bus only remains in the SETUP state for one clock cycle and always moves to the ACCESS state on the next rising edge of the clock
     51                                                           ACCESS : begin
     52                                                               if(PREADY && !transfer)
-    53              1                        259                         ns = IDLE;
+    53              1                      22877                         ns = IDLE;
     54                                                               else if(PREADY && transfer)
-    55              1                       4696                         ns = SETUP;
+    55              1                      29995                         ns = SETUP;
     56                                                               else
-    57              1                       4854                         ns = ACCESS;
+    57              1                      36778                         ns = ACCESS;
     58                                                           end
     59              1                          2                 default : ns = IDLE;
     60                                                       endcase
     61                                                   end
     62                                               
     63                                                   //output logic
-    64              1                      19968         always @(*) begin
+    64              1                     188546         always @(*) begin
     65                                                       if(~PRESETn)
     66                                                           begin
-    67              1                        605                     PSEL = 0;
-    68              1                        605                     PENABLE = 0;
-    69              1                        605                     PWRITE = 0;
-    70              1                        605                     PADDR = 0;
-    71              1                        605                     PWDATA = 0;
-    72              1                        605                     PSTRB = 0;
-    73              1                        605                     PPROT = 0;
+    67              1                       5289                     PSEL = 0;
+    68              1                       5289                     PENABLE = 0;
+    69              1                       5289                     PWRITE = 0;
+    70              1                       5289                     PADDR = 0;
+    71              1                       5289                     PWDATA = 0;
+    72              1                       5289                     PSTRB = 0;
+    73              1                       5289                     PPROT = 0;
     74                                                           end
     75                                                       else begin
     76                                                           case(cs)
     77                                                               IDLE : begin
-    78              1                        557                         PSEL = 0;
-    79              1                        557                         PENABLE = 0;
+    78              1                      40554                         PSEL = 0;
+    79              1                      40554                         PENABLE = 0;
     80                                                               end
     81                                                               SETUP : begin
-    82              1                       9551                         PSEL = 1;
-    83              1                       9551                         PENABLE = 0;   //signals are sent to slave in setup state
-    84              1                       9551                         PWRITE = SWRITE;
-    85              1                       9551                         PADDR = SADDR;
-    86              1                       9551                         PWDATA = SWDATA;
-    87              1                       9551                         PSTRB = SSTRB;
-    88              1                       9551                         PPROT = SPROT;
+    82              1                      72463                         PSEL = 1;
+    83              1                      72463                         PENABLE = 0;   //signals are sent to slave in setup state
+    84              1                      72463                         PWRITE = SWRITE;
+    85              1                      72463                         PADDR = SADDR;
+    86              1                      72463                         PWDATA = SWDATA;
+    87              1                      72463                         PSTRB = SSTRB;
+    88              1                      72463                         PPROT = SPROT;
     89                                                               end
     90                                                               ACCESS : begin
-    91              1                       9255                         PSEL = 1;
-    92              1                       9255                         PENABLE = 1;
+    91              1                      70240                         PSEL = 1;
+    92              1                      70240                         PENABLE = 1;
 
 Toggle Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
@@ -884,42 +867,42 @@ Branch Coverage for instance /\tb_top#DUT#Slave
     ----         ----                      -----     ------ 
   File design/APB_design/APB_Slave.v
 ------------------------------------IF Branch------------------------------------
-    23                                      9725     Count coming in to IF
-    23              1                        304             if (~PRESETn) begin
-    27              1                       9005             else if (PSEL) begin  // Access state when PSEL is high
-                                             416     All False Count
+    23                                     87645     Count coming in to IF
+    23              1                       3024             if (~PRESETn) begin
+    27              1                      68188             else if (PSEL) begin  // Access state when PSEL is high
+                                           16433     All False Count
 Branch totals: 3 hits of 3 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    29                                      9005     Count coming in to IF
-    29              1                       6512                 if (PWRITE) begin     
-    51              1                       2493                 else begin
+    29                                     68188     Count coming in to IF
+    29              1                      49186                 if (PWRITE) begin     
+    51              1                      19002                 else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 ------------------------------------CASE Branch------------------------------------
-    30                                      6512     Count coming in to CASE
-    31              1                        228                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
-    32              1                        193                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
-    33              1                        185                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
-    34              1                        207                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
-    35              1                        210                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
-    36              1                        184                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
-    37              1                        184                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
-    38              1                        176                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
-    39              1                        193                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
-    40              1                        234                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
-    41              1                        235                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
-    42              1                        166                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
-    43              1                        925                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
-    44              1                       1019                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
-    45              1                       1997                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
-    46              1                        176                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
+    30                                     49186     Count coming in to CASE
+    31              1                       1514                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
+    32              1                       1384                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
+    33              1                       1457                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
+    34              1                       1495                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
+    35              1                       1526                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
+    36              1                       1547                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
+    37              1                       1427                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
+    38              1                       1525                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
+    39              1                       1450                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
+    40              1                       1485                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
+    41              1                       1557                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
+    42              1                       1555                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
+    43              1                       7560                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
+    44              1                       7315                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
+    45              1                      14926                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
+    46              1                       1463                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
 Branch totals: 16 hits of 16 branches = 100.00%
 
 ------------------------------------IF Branch------------------------------------
-    52                                      2493     Count coming in to IF
-    52              1                       1907                     if (PSTRB != 0)
-    54              1                        586                     else begin
+    52                                     19002     Count coming in to IF
+    52              1                      14666                     if (PSTRB != 0)
+    54              1                       4336                     else begin
 Branch totals: 2 hits of 2 branches = 100.00%
 
 
@@ -976,41 +959,41 @@ Statement Coverage for instance /\tb_top#DUT#Slave  --
     19                                                   // Define memory using the MEM_WIDTH and MEM_DEPTH from `defines`
     20                                                   reg [MEM_WIDTH-1:0] Cache [MEM_DEPTH-1:0];
     21                                               
-    22              1                       9725         always @ (posedge PCLK) begin
+    22              1                      87645         always @ (posedge PCLK) begin
     23                                                       if (~PRESETn) begin
-    24              1                        304                 PSLVERR <= 0;
-    25              1                        304                 PRDATA <= 0;
+    24              1                       3024                 PSLVERR <= 0;
+    25              1                       3024                 PRDATA <= 0;
     26                                                       end
     27                                                       else if (PSEL) begin  // Access state when PSEL is high
     28                                                           // Writing stage
     29                                                           if (PWRITE) begin     
     30                                                             case (PSTRB)
-    31              1                        228                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
-    32              1                        193                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
-    33              1                        185                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
-    34              1                        207                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
-    35              1                        210                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
-    36              1                        184                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
-    37              1                        184                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
-    38              1                        176                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
-    39              1                        193                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
-    40              1                        234                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
-    41              1                        235                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
-    42              1                        166                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
-    43              1                        925                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
-    44              1                       1019                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
-    45              1                       1997                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
-    46              1                        176                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
+    31              1                       1514                     4'b0001: Cache[PADDR] <= {{24{PWDATA[7]}}, PWDATA[7:0]}; // Store the least significant byte (sb)
+    32              1                       1384                     4'b0010: Cache[PADDR] <= {{24{PWDATA[15]}}, PWDATA[15:8], 8'h00}; // Store the second byte with zeroes in the least 8 bits
+    33              1                       1457                     4'b0011: Cache[PADDR] <= {{16{PWDATA[15]}}, PWDATA[15:0]}; // Store the least significant half-word (sh)
+    34              1                       1495                     4'b0100: Cache[PADDR] <= {{24{PWDATA[23]}}, PWDATA[23:16], 8'h00}; // Store the third byte with zeroes in the least 8 bits
+    35              1                       1526                     4'b0101: Cache[PADDR] <= {{16{PWDATA[23]}}, PWDATA[23:16], 8'h00, PWDATA[7:0]}; // Store the third and least significant bytes with zeroes
+    36              1                       1547                     4'b0110: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:8], 8'h00}; // Store the second and third bytes with zeroes in the least 8 bits
+    37              1                       1427                     4'b0111: Cache[PADDR] <= {{8{PWDATA[23]}}, PWDATA[23:0]}; // Store the least significant three bytes (sh)
+    38              1                       1525                     4'b1000: Cache[PADDR] <= {PWDATA[31:24], 24'h000000}; // Store the most significant byte without sign extension
+    39              1                       1450                     4'b1001: Cache[PADDR] <= {PWDATA[31:24], 16'h0000, PWDATA[7:0]}; // Store the most and least significant bytes without sign extension
+    40              1                       1485                     4'b1010: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:8], 8'h00}; // Store the most significant half-word with zeroes in the least significant byte if PSTRB[0] == 0
+    41              1                       1557                     4'b1011: Cache[PADDR] <= {PWDATA[31:23], 8'h00, PWDATA[15:0]}; // Store the most significant half-word and the least significant byte, zeroing the middle byte if necessary
+    42              1                       1555                     4'b1100: Cache[PADDR] <= {PWDATA[31:16], 16'h0000}; // Store the most significant and second bytes without sign extension
+    43              1                       7560                     4'b1101: Cache[PADDR] <= {PWDATA[31:16], 8'h00, PWDATA[7:0]}; // Store the most significant three bytes with zeroes in the least 8 bits
+    44              1                       7315                     4'b1110: Cache[PADDR] <= {PWDATA[31:8], 8'h00}; // Store the most significant three bytes with zeroes in the least 8 bits
+    45              1                      14926                     4'b1111: Cache[PADDR] <= PWDATA[31:0]; // Store the full word without sign extension
+    46              1                       1463                     default: Cache[PADDR] <= 32'h00000000; // Default case to handle invalid PSTRB values
     47                                                           endcase
-    48              1                       6512                     PSLVERR <= 0;
+    48              1                      49186                     PSLVERR <= 0;
     49                                                           end
     50                                                           // Reading stage
     51                                                           else begin
     52                                                               if (PSTRB != 0)
-    53              1                       1907                         PSLVERR <= 1;  // PSTRB must remain low when reading
+    53              1                      14666                         PSLVERR <= 1;  // PSTRB must remain low when reading
     54                                                               else begin
-    55              1                        586                         PRDATA <= Cache[PADDR];
-    56              1                        586                         PSLVERR <= 0;
+    55              1                       4336                         PRDATA <= Cache[PADDR];
+    56              1                       4336                         PSLVERR <= 0;
 
 Toggle Coverage:
     Enabled Coverage              Bins      Hits    Misses  Coverage
@@ -1043,50 +1026,66 @@ Untoggled Node Count =          0
 Toggle Coverage      =     100.00% (176 of 176 bins)
 
 
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/\tb_top#DUT /APB_sva_inst/write_op_cover 
+                                         APB_sva Verilog  SVA  design/APB_Assertions/APB_sva.sv(163)
+                                                                              17886 Covered   
+/\tb_top#DUT /APB_sva_inst/read_op_cover APB_sva Verilog  SVA  design/APB_Assertions/APB_sva.sv(170)
+                                                                              7824 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 2
+
 ASSERTION RESULTS:
 --------------------------------------------------------------------
 Name                 File(Line)                   Failure      Pass 
                                                   Count        Count
 --------------------------------------------------------------------
 /\tb_top#DUT /APB_sva_inst/reset_master_assert
-                     design/APB_Assertions/APB_sva.sv(54)
+                     design/APB_Assertions/APB_sva.sv(52)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/reset_slave_assert
-                     design/APB_Assertions/APB_sva.sv(57)
+                     design/APB_Assertions/APB_sva.sv(55)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/reset_fsm_assert
-                     design/APB_Assertions/APB_sva.sv(60)
+                     design/APB_Assertions/APB_sva.sv(58)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/idle_to_setup_assert
-                     design/APB_Assertions/APB_sva.sv(76)
+                     design/APB_Assertions/APB_sva.sv(74)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/idle_hold_assert
-                     design/APB_Assertions/APB_sva.sv(79)
+                     design/APB_Assertions/APB_sva.sv(77)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/setup_to_access_assert
-                     design/APB_Assertions/APB_sva.sv(88)
+                     design/APB_Assertions/APB_sva.sv(86)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/access_to_setup_assert
-                     design/APB_Assertions/APB_sva.sv(102)
+                     design/APB_Assertions/APB_sva.sv(100)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/illegal_access_to_setup_assert
-                     design/APB_Assertions/APB_sva.sv(105)
+                     design/APB_Assertions/APB_sva.sv(103)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/access_to_idle_assert
-                     design/APB_Assertions/APB_sva.sv(119)
+                     design/APB_Assertions/APB_sva.sv(117)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/illegal_access_to_idle_assert
-                     design/APB_Assertions/APB_sva.sv(122)
+                     design/APB_Assertions/APB_sva.sv(120)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/peripheral_signals_idle_assert
-                     design/APB_Assertions/APB_sva.sv(131)
+                     design/APB_Assertions/APB_sva.sv(129)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/peripheral_signals_setup_assert
-                     design/APB_Assertions/APB_sva.sv(146)
+                     design/APB_Assertions/APB_sva.sv(144)
                                                         0          1
 /\tb_top#DUT /APB_sva_inst/peripheral_signals_access_assert
-                     design/APB_Assertions/APB_sva.sv(155)
+                     design/APB_Assertions/APB_sva.sv(153)
+                                                        0          1
+/\tb_top#DUT /APB_sva_inst/pready_assert
+                     design/APB_Assertions/APB_sva.sv(180)
                                                         0          1
 
-Total Coverage By Instance (filtered view): 96.78%
+Total Coverage By Instance (filtered view): 100.00%
 

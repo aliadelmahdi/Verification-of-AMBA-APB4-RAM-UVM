@@ -16,7 +16,7 @@ package APB_master_main_sequence_pkg;
         
         task body;
 
-            repeat(`TEST_ITER_LARGE) begin
+            repeat(`TEST_ITER_STRESS) begin
                 seq_item = APB_master_seq_item::type_id::create("seq_item");
                 start_item(seq_item);
                 assert(seq_item.randomize()) else $error("Master Randomization Failed");
