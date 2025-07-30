@@ -1,6 +1,5 @@
-// The following `define` values represent bit widths and sizes used in the design. 
-// are only for convenience and to make the code more readable. 
-`include "apb_defines.svh" // For macros
+`ifndef APB_SLAVE_V
+`define APB_SLAVE_V
 
 module APB_Slave #(
         parameter MEM_WIDTH = `MEM_WIDTH, 
@@ -59,4 +58,6 @@ module APB_Slave #(
         end
     end
     assign PREADY = (PSEL && PENABLE) ? 1 : 0; 
-endmodule
+endmodule : APB_Slave
+
+`endif // APB_SLAVE_V

@@ -1,7 +1,5 @@
-package APB_config_pkg;
-
-    import uvm_pkg::*;
-    `include "uvm_macros.svh"
+`ifndef APB_CONFIG_SV
+`define APB_CONFIG_SV
 
     class APB_config extends uvm_object;
 
@@ -16,4 +14,4 @@ package APB_config_pkg;
         
     endclass : APB_config
 
-endpackage : APB_config_pkg
+`endif // APB_CONFIG_SV

@@ -1,11 +1,5 @@
-package APB_slave_driver_pkg;
-
-    import  uvm_pkg::*,
-            APB_config_pkg::*,
-            APB_slave_main_sequence_pkg::*,
-            APB_slave_seq_item_pkg::*;
-
-    `include "uvm_macros.svh"
+`ifndef APB_SLAVE_DRIVER_SV
+`define APB_SLAVE_DRIVER_SV
 
     class APB_slave_driver extends uvm_driver #(APB_slave_seq_item);
         `uvm_component_utils(APB_slave_driver)
@@ -48,4 +42,4 @@ package APB_slave_driver_pkg;
         
     endclass : APB_slave_driver
 
-endpackage : APB_slave_driver_pkg
+`endif // APB_SLAVE_DRIVER_SV

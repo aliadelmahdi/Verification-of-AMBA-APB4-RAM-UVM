@@ -2,6 +2,7 @@ package shared_pkg;
 
     // Include macros inside the package
     `include "apb_defines.svh"
+    `include "uvm_macros.svh"
     
     // FSM ARM AMPA APB4 States
     typedef enum {IDLE, SETUP, ACCESS} state_e;

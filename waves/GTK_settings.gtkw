@@ -1,0 +1,60 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Wed Jul 30 15:46:21 2025
+[*]
+[dumpfile] "e:\Shared Folders\Uni\courses\Digital circuit\digital github codes\Verification-of-AMPA-APB4-Protocol-UVM\waves\waves.vcd"
+[dumpfile_mtime] "Wed Jul 30 15:45:42 2025"
+[dumpfile_size] 239563
+[savefile] "e:\Shared Folders\Uni\courses\Digital circuit\digital github codes\Verification-of-AMPA-APB4-Protocol-UVM\waves\GTK_settings.gtkw"
+[timestart] 0
+[size] 1920 1009
+[pos] -217 -217
+*-6.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_top.
+[sst_width] 197
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@22
+tb_top.apb_if.PADDR[9:0]
+tb_top.apb_if.PADDR_ref[9:0]
+@28
+tb_top.apb_if.PCLK
+tb_top.apb_if.PENABLE
+tb_top.apb_if.PENABLE_ref
+tb_top.apb_if.PPROT[2:0]
+tb_top.apb_if.PPROT_ref[2:0]
+@22
+tb_top.apb_if.PRDATA[31:0]
+tb_top.apb_if.PRDATA_ref[31:0]
+@28
+tb_top.apb_if.PREADY
+tb_top.apb_if.PREADY_ref
+tb_top.apb_if.PRESETn
+tb_top.apb_if.PSEL
+tb_top.apb_if.PSEL_ref
+tb_top.apb_if.PSLVERR
+tb_top.apb_if.PSLVERR_ref
+@22
+tb_top.apb_if.PSTRB[3:0]
+tb_top.apb_if.PSTRB_ref[3:0]
+tb_top.apb_if.PWDATA[31:0]
+tb_top.apb_if.PWDATA_ref[31:0]
+@28
+tb_top.apb_if.PWRITE
+tb_top.apb_if.PWRITE_ref
+@22
+tb_top.apb_if.SADDR[9:0]
+@28
+tb_top.apb_if.SPROT[2:0]
+@22
+tb_top.apb_if.SSTRB[3:0]
+tb_top.apb_if.SWDATA[31:0]
+@28
+tb_top.apb_if.SWRITE
+@420
+tb_top.apb_if.cs
+@28
+tb_top.apb_if.transfer
+[pattern_trace] 1
+[pattern_trace] 0

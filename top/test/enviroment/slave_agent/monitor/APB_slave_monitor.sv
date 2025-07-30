@@ -1,9 +1,5 @@
-package APB_slave_monitor_pkg;
-
-    import uvm_pkg::*,
-           APB_slave_seq_item_pkg::*;
-
-    `include "uvm_macros.svh"
+`ifndef APB_SLAVE_MONITOR_SV
+`define APB_SLAVE_MONITOR_SV
 
     class APB_slave_monitor extends uvm_monitor;
 
@@ -57,4 +53,4 @@ package APB_slave_monitor_pkg;
         
     endclass : APB_slave_monitor
 
-endpackage : APB_slave_monitor_pkg
+`endif // APB_SLAVE_MONITOR_SV

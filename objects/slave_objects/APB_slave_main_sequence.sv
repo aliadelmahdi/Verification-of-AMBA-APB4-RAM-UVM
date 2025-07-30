@@ -1,8 +1,5 @@
-package APB_slave_main_sequence_pkg;
-
-    import uvm_pkg::*;
-    import APB_slave_seq_item_pkg::*;
-    `include "uvm_macros.svh"
+`ifndef APB_SLAVE_MAIN_SEQUENCE_SV
+`define APB_SLAVE_MAIN_SEQUENCE_SV
 
     class APB_slave_main_sequence extends uvm_sequence #(APB_slave_seq_item);
 
@@ -26,4 +23,4 @@ package APB_slave_main_sequence_pkg;
         
     endclass : APB_slave_main_sequence
 
-endpackage : APB_slave_main_sequence_pkg
+`endif // APB_SLAVE_MAIN_SEQUENCE_SV

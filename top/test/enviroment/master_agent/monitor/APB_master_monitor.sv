@@ -1,8 +1,5 @@
-package APB_master_monitor_pkg;
-
-    import uvm_pkg::*,
-           APB_master_seq_item_pkg::*;
-    `include "uvm_macros.svh"
+`ifndef APB_MASTER_MONITOR_SV
+`define APB_MASTER_MONITOR_SV
 
     class APB_master_monitor extends uvm_monitor;
         `uvm_component_utils (APB_master_monitor)
@@ -66,4 +63,4 @@ package APB_master_monitor_pkg;
         
     endclass : APB_master_monitor
 
-endpackage : APB_master_monitor_pkg
+`endif // APB_MASTER_MONITOR_SV

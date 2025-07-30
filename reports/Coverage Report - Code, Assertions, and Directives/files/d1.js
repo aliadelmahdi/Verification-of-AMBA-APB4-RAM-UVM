@@ -1,0 +1,2 @@
+var g_data = {"8":{"pr":"/\\tb_top#DUT /APB_sva_inst","ty":2,"dui":4,"dun":"work.APB_sva","direct":[{"n":["write_op_cover",5,163],"h":18},{"n":["read_op_cover",5,170],"h":2}]}};
+processDirectivesData(g_data);

@@ -2,15 +2,7 @@
 package APB_test_pkg;
     import  uvm_pkg::*,
             APB_env_pkg::*,
-            APB_config_pkg::*,
-            APB_slave_driver_pkg::*,
-            APB_master_driver_pkg::*,
-            APB_master_main_sequence_pkg::*,
-            APB_slave_main_sequence_pkg::*,
-            APB_master_reset_sequence_pkg::*,
-            APB_master_seq_item_pkg::*,
-            APB_slave_seq_item_pkg::*;
-    `include "uvm_macros.svh"
+            shared_pkg::*;
     class APB_test extends uvm_test;
         `uvm_component_utils(APB_test)
         APB_env apb_env; // Enviroment handle to the APB4

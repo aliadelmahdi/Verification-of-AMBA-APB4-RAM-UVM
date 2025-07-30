@@ -1,5 +1,7 @@
-// The following `define` are only for convenience and to make the code more readable. 
-`include "apb_defines.svh" // For macros
+// // The following `define` are only for convenience and to make the code more readable. 
+// `include "apb_defines.svh" // For macros
+`ifndef APB_MASTER_SV
+`define APB_MASTER_SV
 
 module APB_Master (
         //the followin signals are from the External System 
@@ -94,4 +96,6 @@ module APB_Master (
             endcase
         end
     end
-endmodule
+endmodule : APB_Master
+
+`endif // APB_MASTER_SV

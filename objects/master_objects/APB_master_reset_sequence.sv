@@ -1,10 +1,6 @@
-package APB_master_reset_sequence_pkg;
+`ifndef APB_MASTER_RESET_SEQUENCE_SV
+`define APB_MASTER_RESET_SEQUENCE_SV
 
-    import uvm_pkg::*,
-           APB_master_seq_item_pkg::*,
-           shared_pkg::*; // For enums and parameters
-    `include "uvm_macros.svh"
-           
     class APB_master_reset_sequence extends uvm_sequence #(APB_master_seq_item);
 
         `uvm_object_utils (APB_master_reset_sequence)
@@ -30,4 +26,4 @@ package APB_master_reset_sequence_pkg;
         
     endclass : APB_master_reset_sequence
 
-endpackage : APB_master_reset_sequence_pkg
+`endif // APB_MASTER_RESET_SEQUENCE_SV

@@ -1,23 +1,5 @@
-package APB_coverage_pkg;
-    import  uvm_pkg::*,
-            APB_slave_driver_pkg::*,
-            APB_master_driver_pkg::*,
-            APB_scoreboard_pkg::*,
-            APB_master_main_sequence_pkg::*,
-            APB_slave_main_sequence_pkg::*,
-            APB_master_reset_sequence_pkg::*,
-            APB_master_seq_item_pkg::*,
-            APB_slave_seq_item_pkg::*,
-            APB_slave_sequencer_pkg::*,
-            APB_master_sequencer_pkg::*,
-            APB_slave_monitor_pkg::*,
-            APB_master_monitor_pkg::*,
-            APB_config_pkg::*,
-            APB_slave_agent_pkg::*,
-            APB_master_agent_pkg::*,
-            shared_pkg::*;
-    `include "uvm_macros.svh"
-
+`ifndef APB_COVERAGE_SV
+`define APB_COVERAGE_SV
 
     class APB_coverage extends uvm_component;
         `uvm_component_utils(APB_coverage)
@@ -232,4 +214,4 @@ package APB_coverage_pkg;
 
     endclass : APB_coverage
 
-endpackage : APB_coverage_pkg
+`endif // APB_COVERAGE_SV

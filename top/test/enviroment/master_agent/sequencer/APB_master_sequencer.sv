@@ -1,8 +1,5 @@
-package APB_master_sequencer_pkg;
-
-    import uvm_pkg::*,
-           APB_master_seq_item_pkg::*;
-    `include "uvm_macros.svh"
+`ifndef APB_MASTER_SEQUENCER_SV
+`define APB_MASTER_SEQUENCER_SV
 
     class APB_master_sequencer extends uvm_sequencer #(APB_master_seq_item);
 
@@ -28,4 +25,4 @@ package APB_master_sequencer_pkg;
         endtask
     endclass : APB_master_sequencer
 
-endpackage : APB_master_sequencer_pkg
+`endif // APB_MASTER_SEQUENCER_SV

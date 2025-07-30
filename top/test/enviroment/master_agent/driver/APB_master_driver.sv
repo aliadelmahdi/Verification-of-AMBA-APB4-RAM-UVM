@@ -1,11 +1,5 @@
-package APB_master_driver_pkg;
-
-    import  uvm_pkg::*,
-            APB_config_pkg::*,
-            APB_master_main_sequence_pkg::*,
-            APB_master_reset_sequence_pkg::*,
-            APB_master_seq_item_pkg::*;
-    `include "uvm_macros.svh"
+`ifndef APB_MASTER_DRIVER_SV
+`define APB_MASTER_DRIVER_SV
 
     class APB_master_driver extends uvm_driver #(APB_master_seq_item);
         `uvm_component_utils(APB_master_driver)
@@ -48,4 +42,4 @@ package APB_master_driver_pkg;
         
     endclass : APB_master_driver
 
-endpackage : APB_master_driver_pkg
+`endif // APB_MASTER_DRIVER_SV

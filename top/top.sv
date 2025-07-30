@@ -2,7 +2,6 @@ import uvm_pkg::*;
 import APB_env_pkg::*;
 import APB_test_pkg::*;
 import shared_pkg::*; // For enums and parameters
-`include "apb_defines.svh" // For macros
 `timescale `TIME_UNIT / `TIME_PRECISION
 
 module tb_top;

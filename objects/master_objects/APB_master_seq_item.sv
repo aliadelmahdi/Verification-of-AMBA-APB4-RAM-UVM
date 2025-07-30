@@ -1,9 +1,5 @@
-package APB_master_seq_item_pkg;
-
-    import uvm_pkg::*,
-           shared_pkg::*; // For enums and parameters
-    `include "uvm_macros.svh"
-    `include "apb_defines.svh" // For macros
+`ifndef APB_MASTER_SEQ_ITEM_SV
+`define APB_MASTER_SEQ_ITEM_SV
 
     class APB_master_seq_item extends uvm_sequence_item;
         // RTL Design Signals
@@ -158,4 +154,4 @@ package APB_master_seq_item_pkg;
         }
     endclass : APB_master_seq_item
 
-endpackage : APB_master_seq_item_pkg
+`endif // APB_MASTER_SEQ_ITEM_SV

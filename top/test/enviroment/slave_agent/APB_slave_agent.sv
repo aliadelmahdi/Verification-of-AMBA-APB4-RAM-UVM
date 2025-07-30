@@ -1,13 +1,6 @@
-package APB_slave_agent_pkg;
-    import uvm_pkg::*,
-        APB_slave_seq_item_pkg::*,
-        APB_slave_driver_pkg::*,
-        APB_slave_main_sequence_pkg::*,
-        APB_slave_sequencer_pkg::*,
-        APB_slave_monitor_pkg::*,
-        APB_config_pkg::*;
-    `include "uvm_macros.svh"
- 
+`ifndef APB_SLAVE_AGENT_SV
+`define APB_SLAVE_AGENT_SV
+
     class APB_slave_agent extends uvm_agent;
 
         `uvm_component_utils(APB_slave_agent)
@@ -51,4 +44,4 @@ package APB_slave_agent_pkg;
         endtask
     endclass : APB_slave_agent
 
-endpackage : APB_slave_agent_pkg
+`endif // APB_SLAVE_AGENT_SV

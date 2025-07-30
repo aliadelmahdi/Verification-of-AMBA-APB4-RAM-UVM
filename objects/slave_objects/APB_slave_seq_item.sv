@@ -1,9 +1,5 @@
-package APB_slave_seq_item_pkg;
-
-import uvm_pkg::*;
-`include "uvm_macros.svh"
-`include "apb_defines.svh" // For macros
- 
+`ifndef APB_SLAVE_SEQ_ITEM_SV
+`define APB_SLAVE_SEQ_ITEM_SV
     class APB_slave_seq_item extends uvm_sequence_item;
         logic PSEL, PENABLE, PWRITE;  
         logic [`APB_ADDR_WIDTH-1:0]  PADDR;
@@ -39,4 +35,4 @@ import uvm_pkg::*;
         
     endclass : APB_slave_seq_item
 
-endpackage : APB_slave_seq_item_pkg
+`endif // APB_SLAVE_SEQ_ITEM_SV

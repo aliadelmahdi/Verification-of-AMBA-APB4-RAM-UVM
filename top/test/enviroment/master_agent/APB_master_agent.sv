@@ -1,14 +1,6 @@
-package APB_master_agent_pkg;
-    import  uvm_pkg::*,
-            APB_master_seq_item_pkg::*,
-            APB_master_driver_pkg::*,
-            APB_master_main_sequence_pkg::*,
-            APB_master_reset_sequence_pkg::*,
-            APB_master_sequencer_pkg::*,
-            APB_master_monitor_pkg::*,
-            APB_config_pkg::*;
-    `include "uvm_macros.svh"
- 
+`ifndef APB_MASTER_AGENT_SV
+`define APB_MASTER_AGENT_SV
+
     class APB_master_agent extends uvm_agent;
 
         `uvm_component_utils(APB_master_agent)
@@ -50,4 +42,4 @@ package APB_master_agent_pkg;
         endtask
     endclass : APB_master_agent
 
-endpackage : APB_master_agent_pkg
+`endif // APB_MASTER_AGENT_SV

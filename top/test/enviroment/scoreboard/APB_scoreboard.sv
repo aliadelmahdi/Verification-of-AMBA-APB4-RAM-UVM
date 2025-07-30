@@ -1,12 +1,6 @@
-package APB_scoreboard_pkg;
-    import  uvm_pkg::*,
-            APB_master_seq_item_pkg::*,
-            APB_slave_seq_item_pkg::*,
-            shared_pkg::*; // For enums and parameters
-    
-    `include "apb_defines.svh" // For macros
+`ifndef APB_SCOREBOARD_SV
+`define APB_SCOREBOARD_SV
 
-    `include "uvm_macros.svh"
     class APB_scoreboard extends uvm_scoreboard;
         `uvm_component_utils(APB_scoreboard)
         
@@ -77,4 +71,4 @@ package APB_scoreboard_pkg;
         endfunction
     endclass : APB_scoreboard
 
-endpackage : APB_scoreboard_pkg
+`endif // APB_SCOREBOARD_SV

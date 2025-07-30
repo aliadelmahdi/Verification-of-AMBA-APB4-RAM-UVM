@@ -1,4 +1,5 @@
-`include "apb_defines.svh" // For macros
+`ifndef APB_WRAPPER_V
+`define APB_WRAPPER_V
 
 module APB_Wrapper (
     input PCLK, PRESETn,
@@ -54,4 +55,7 @@ module APB_Wrapper (
         .PSLVERR(PSLVERR),
         .PRDATA(PRDATA)
     );
-endmodule
+
+endmodule : APB_Wrapper
+
+`endif // APB_WRAPPER_V

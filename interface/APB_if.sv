@@ -1,8 +1,8 @@
 // Comments referenced I used are from the ARM AMBA APB4 specifications  
 // For detailed information on the AMBA APB4 interface, refer to the official ARM specification:
 // https://www.eecs.umich.edu/courses/eecs373/readings/IHI0024C_amba_apb_protocol_spec.pdf
-`include "apb_defines.svh" // For macros
 import shared_pkg::*; // For enums and parameters
+
 interface APB_if(input bit PCLK); // Clock. The rising edge of PCLK times all transfers on the APB.
   // External stimulus signals
   logic SWRITE;
@@ -41,4 +41,5 @@ interface APB_if(input bit PCLK); // Clock. The rising edge of PCLK times all tr
   logic PREADY_ref;
   logic PSLVERR_ref;
   logic [`APB_DATA_WIDTH-1:0] PRDATA_ref;
-endinterface
+
+endinterface : APB_if
