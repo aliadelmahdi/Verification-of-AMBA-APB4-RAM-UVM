@@ -42,4 +42,29 @@ interface APB_if(input bit PCLK); // Clock. The rising edge of PCLK times all tr
   logic PSLVERR_ref;
   logic [`APB_DATA_WIDTH-1:0] PRDATA_ref;
 
+  modport master_driver (
+    output SWRITE, SADDR, SWDATA, SSTRB, SPROT, transfer, PRESETn,
+    input  PCLK
+  );
+
+  modport master_monitor (
+    input SWRITE, SADDR, SWDATA, SSTRB, SPROT, transfer,
+          PENABLE, PSEL, PWRITE, PADDR, PWDATA, PSTRB, PPROT,
+          PRESETn, PREADY, PSLVERR, cs,
+          PENABLE_ref, PSEL_ref, PWRITE_ref, PADDR_ref,
+          PWDATA_ref, PSTRB_ref, PPROT_ref, PREADY_ref, PSLVERR_ref,
+          PCLK
+  );
+
+  modport slave_driver (
+    output PWRITE, PADDR, PWDATA, PSTRB, PPROT, PSEL, PENABLE, PRESETn,
+    input  PCLK
+  );
+
+  modport slave_monitor (
+    input PCLK, PSEL, PENABLE, PWRITE, PADDR, PWDATA,
+          PSTRB, PPROT, PRDATA, PREADY, PSLVERR, PRESETn,
+          PREADY_ref, PSLVERR_ref, PRDATA_ref
+  );
+
 endinterface : APB_if

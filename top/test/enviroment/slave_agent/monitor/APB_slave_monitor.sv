@@ -4,24 +4,25 @@
     class APB_slave_monitor extends uvm_monitor;
 
         `uvm_component_utils (APB_slave_monitor)
-        virtual APB_if apb_if;
+        virtual APB_if.slave_monitor apb_if;
         APB_slave_seq_item slave_response_seq_item;
         uvm_analysis_port #(APB_slave_seq_item) slave_monitor_ap;
 
+        // Default Constructor
         function new(string name = "APB_slave_monitor",uvm_component parent);
             super.new(name,parent);
-        endfunction
+        endfunction : new
 
         // Build Phase
         function void build_phase(uvm_phase phase);
             super.build_phase(phase);
             slave_monitor_ap = new ("slave_monitor_ap",this);
-        endfunction
+        endfunction : build_phase
 
         // Connect Phase
         function void connect_phase(uvm_phase phase);
 			super.connect_phase(phase);
-		endfunction
+		endfunction : connect_phase
 
         // Run Phase
         task run_phase (uvm_phase phase);
@@ -49,7 +50,7 @@
                 `uvm_info("run_phase", slave_response_seq_item.sprint(), UVM_HIGH)
             end
 
-        endtask
+        endtask : run_phase
         
     endclass : APB_slave_monitor
 

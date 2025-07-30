@@ -17,7 +17,7 @@
         // Default Constructor
         function new(string name = "APB_scoreboard",uvm_component parent);
             super.new(name,parent);
-        endfunction
+        endfunction : new
 
         // Build Phase
         function void build_phase(uvm_phase phase);
@@ -26,14 +26,14 @@
             apb_master_sb=new("apb_master_sb",this);
             slave_sb_export = new("slave_sb_export",this);
             apb_slave_sb=new("apb_slave_sb",this);
-        endfunction
+        endfunction : build_phase
 
         // Connect Phase
         function void connect_phase(uvm_phase phase);
             super.connect_phase(phase);
             master_sb_export.connect(apb_master_sb.analysis_export);
             slave_sb_export.connect(apb_slave_sb.analysis_export);
-        endfunction
+        endfunction : connect_phase
 
         // Run Phase
         task run_phase(uvm_phase phase);
@@ -43,13 +43,13 @@
                 apb_slave_sb.get(slave_seq_item_sb);
                 check_results(master_seq_item_sb,slave_seq_item_sb);
             end
-        endtask
+        endtask : run_phase
 
         // Report Phase
         function void report_phase(uvm_phase phase);
             super.report_phase(phase);
             `uvm_info("report_phase",$sformatf("At time %0t: Simulation Ends and Error count= %0d, Correct count= %0d",$time,error_count,correct_count),UVM_MEDIUM);
-        endfunction
+        endfunction : report_phase
 
         function void check_results(APB_master_seq_item seq_item_ch, APB_slave_seq_item seq_item_ch_slave);
             if ( seq_item_ch_slave.PRDATA != seq_item_ch_slave.PRDATA_ref
@@ -68,7 +68,8 @@
             end
             else
                 correct_count++;
-        endfunction
+        endfunction : check_results
+        
     endclass : APB_scoreboard
 
 `endif // APB_SCOREBOARD_SV

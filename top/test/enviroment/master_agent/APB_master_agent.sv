@@ -13,7 +13,7 @@
         // Default Constructor
         function new(string name = "APB_master_agent", uvm_component parent);
             super.new(name,parent);
-        endfunction
+        endfunction : new
 
         // Build Phase
         function void build_phase(uvm_phase phase);
@@ -26,7 +26,7 @@
             apb_master_seqr = APB_master_sequencer::type_id::create("apb_master_seqr",this);
             apb_master_mon = APB_master_monitor::type_id::create("apb_master_mon",this);
             apb_master_agent_ap = new("apb_master_agent_ap",this);
-        endfunction
+        endfunction : build_phase
 
         // Connect Phase
         function void connect_phase(uvm_phase phase);
@@ -34,12 +34,13 @@
             apb_master_mon.apb_if = apb_master_cnfg.apb_if;
             apb_master_drv.seq_item_port.connect(apb_master_seqr.seq_item_export);
             apb_master_mon.master_monitor_ap.connect(apb_master_agent_ap);
-        endfunction
+        endfunction : connect_phase
 
         // Run Phase
         task run_phase (uvm_phase phase);
             super.run_phase(phase);
-        endtask
+        endtask : run_phase
+        
     endclass : APB_master_agent
 
 `endif // APB_MASTER_AGENT_SV

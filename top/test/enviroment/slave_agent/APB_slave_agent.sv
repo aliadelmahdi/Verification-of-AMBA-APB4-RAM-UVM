@@ -11,10 +11,12 @@
         uvm_analysis_port #(APB_slave_seq_item) apb_slave_agent_ap;
         uvm_active_passive_enum is_active;
 
+        // Default Constructor
         function new(string name = "APB_slave_agent", uvm_component parent);
             super.new(name,parent);
-        endfunction
+        endfunction : new
 
+        // Build Phase
         function void build_phase(uvm_phase phase);
             super.build_phase(phase);
 
@@ -27,8 +29,9 @@
             end
             apb_slave_mon = APB_slave_monitor::type_id::create("apb_slave_mon",this);
             apb_slave_agent_ap = new("apb_slave_agent_ap",this);
-        endfunction
+        endfunction : build_phase
 
+        // Connect Phase
         function void connect_phase(uvm_phase phase);
             if(is_active==UVM_ACTIVE)begin
               apb_slave_drv.seq_item_port.connect(apb_slave_seqr.seq_item_export);
@@ -36,12 +39,13 @@
             end
             apb_slave_mon.slave_monitor_ap.connect(apb_slave_agent_ap);
             apb_slave_mon.apb_if = apb_slave_cnfg.apb_if;
-        endfunction
+        endfunction : connect_phase
 
         // Run Phase
         task run_phase (uvm_phase phase);
             super.run_phase(phase);
-        endtask
+        endtask : run_phase
+
     endclass : APB_slave_agent
 
 `endif // APB_SLAVE_AGENT_SV

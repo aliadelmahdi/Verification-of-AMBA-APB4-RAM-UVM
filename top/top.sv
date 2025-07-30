@@ -14,7 +14,7 @@ module tb_top;
 
     
     APB_env env_instance; // Instantiate the APB4 enviroment
-    APB_test test; // Instantiate the APB4 test
+    APB_test_base test; // Instantiate the APB4 test
 
     // Instantiate the interface
     APB_if apb_if (clk);
@@ -96,7 +96,7 @@ module tb_top;
         uvm_top.set_report_verbosity_level(UVM_MEDIUM); // Set verbosity level
         uvm_top.finish_on_completion = `DISABLE_FINISH; // Prevent UVM from calling $finish
         uvm_config_db#(virtual APB_if)::set(null, "*", "apb_if", apb_if); // Set APB interface globally
-        run_test("APB_test"); // Start the UVM test
+        run_test("APB_test_base"); // Start the UVM test
         $stop; // Stop simulation after test execution
     end
 endmodule : tb_top

@@ -6,9 +6,10 @@
         `uvm_object_utils (APB_master_reset_sequence)
         APB_master_seq_item master_seq_item;
 
+        // Default Constructor
         function new (string name = "APB_master_reset_sequence");
             super.new(name);
-        endfunction
+        endfunction : new
 
         task body;
             master_seq_item = APB_master_seq_item::type_id::create("master_seq_item");
@@ -22,7 +23,7 @@
                 master_seq_item.PRESETn = `LOW;
                 master_seq_item.cs = IDLE;
             finish_item(master_seq_item);
-        endtask
+        endtask : body
         
     endclass : APB_master_reset_sequence
 

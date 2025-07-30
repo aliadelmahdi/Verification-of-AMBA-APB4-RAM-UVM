@@ -31,7 +31,7 @@
         `uvm_object_utils_end
         function new(string name = "APB_slave_seq_item");
             super.new(name);
-        endfunction
+        endfunction : new
         
     endclass : APB_slave_seq_item
 

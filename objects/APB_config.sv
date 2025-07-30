@@ -10,7 +10,7 @@
         // Default Constructor
         function new(string name = "APB_config");
             super.new(name);
-        endfunction
+        endfunction : new
         
     endclass : APB_config
 

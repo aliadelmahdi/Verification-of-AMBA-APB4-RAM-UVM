@@ -46,4 +46,4 @@
     `define TIME_UNIT 1ps
     `define TIME_PRECISION 1ps
 
-`endif
+`endif // APB_DEFINES_SVH

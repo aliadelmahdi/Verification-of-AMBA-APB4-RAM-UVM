@@ -39,7 +39,7 @@
         // Default Constructor
         function new(string name = "APB_master_seq_item");
             super.new(name);
-        endfunction
+        endfunction : new
 
         `uvm_object_utils_begin(APB_master_seq_item)
             `uvm_field_int(SWRITE, UVM_DEFAULT)

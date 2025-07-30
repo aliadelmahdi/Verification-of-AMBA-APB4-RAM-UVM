@@ -130,4 +130,4 @@ module golden_model (
         endcase
     endfunction
  
-endmodule
+endmodule : golden_model

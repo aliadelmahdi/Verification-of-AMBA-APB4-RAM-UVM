@@ -5,24 +5,25 @@
 
         `uvm_component_utils(APB_slave_sequencer);
 
+        // Default Constructor
         function new(string name = "APB_slave_sequence", uvm_component parent);
             super.new(name,parent);
-        endfunction
+        endfunction : new
         
         // Build Phase
         function void build_phase(uvm_phase phase);
             super.build_phase(phase);
-        endfunction
+        endfunction : build_phase
 
         // Connect Phase
         function void connect_phase(uvm_phase phase);
 			super.connect_phase(phase);
-		endfunction
+		endfunction : connect_phase
 
         // Run Phase
         task run_phase (uvm_phase phase);
             super.run_phase(phase);
-        endtask
+        endtask : run_phase
 
     endclass : APB_slave_sequencer
 

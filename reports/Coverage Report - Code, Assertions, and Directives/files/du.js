@@ -1,2 +1,2 @@
-var g_data = {"data":[{"n":"work.APB_Master","id":2,"zf":1,"tc":87.35,"s":100.00,"b":94.11,"fc":50.00,"fs":100.00,"ft":80.00,"t":100.00},{"n":"work.APB_Slave","id":3,"zf":1,"tc":69.16,"s":56.52,"b":56.52,"fc":100.00,"t":63.63},{"n":"work.APB_Wrapper","id":1,"zf":1,"tc":76.97,"t":76.97},{"n":"work.APB_sva","id":4,"zf":1,"tc":92.54,"t":77.62,"d":100.00,"a":100.00}]};
+var g_data = {"data":[{"n":"work.APB_Master","id":2,"zf":1,"tc":94.85,"s":100.00,"b":94.11,"fc":75.00,"fs":100.00,"ft":100.00,"t":100.00},{"n":"work.APB_Slave","id":3,"zf":1,"tc":80.03,"s":78.26,"b":78.26,"fc":100.00,"t":63.63},{"n":"work.APB_Wrapper","id":1,"zf":1,"tc":76.97,"t":76.97},{"n":"work.APB_sva","id":4,"zf":1,"tc":92.54,"t":77.62,"d":100.00,"a":100.00}]};
 processDuData(g_data);

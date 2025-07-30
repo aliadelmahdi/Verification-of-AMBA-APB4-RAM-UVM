@@ -51,5 +51,5 @@ package shared_pkg;
         PSTRB_FULL_WORD   = 4'b1111
     } pstrb_t;
     
-endpackage
+endpackage : shared_pkg
     

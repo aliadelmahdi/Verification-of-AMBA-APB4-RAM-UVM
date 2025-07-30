@@ -58,7 +58,7 @@
                 bins active_to_inactive = (`HIGH=>`LOW);
                 bins inactive_to_active = (`LOW=>`HIGH);
             }
-        endgroup
+        endgroup : apb_cov_grp
 
         covergroup apb_write_cov_grp;
             pstrb_cp: coverpoint slave_seq_item_cov.PSTRB{
@@ -112,7 +112,7 @@
                 bins privileged_secure_instr = { PRIVILEGED_ACCESS, SECURE_ACCESS, INSTRUCTION_ACCESS };
                 bins privileged_nonsecure_instr = { PRIVILEGED_ACCESS, NONSECURE_ACCESS, INSTRUCTION_ACCESS };    
             }
-        endgroup
+        endgroup : apb_write_cov_grp
 
         covergroup apb_read_cov_grp;
             pslverr_cp: coverpoint master_seq_item_cov.PSLVERR{
@@ -139,7 +139,7 @@
         
                 option.cross_auto_bin_max = 0;
             }
-        endgroup
+        endgroup : apb_read_cov_grp
 
         covergroup apb_write_read_cov_grp;
             addr_cp: coverpoint slave_seq_item_cov.PADDR {
@@ -163,10 +163,10 @@
                 option.cross_auto_bin_max = 0;
             }
         
-        endgroup
+        endgroup : apb_write_read_cov_grp
 
 
-        // Constructor
+        // Default Constructor
         function new (string name = "APB_coverage", uvm_component parent);
             super.new(name, parent);
             apb_cov_grp = new();
@@ -174,7 +174,7 @@
             apb_read_cov_grp = new();
             apb_write_read_cov_grp = new();
 
-        endfunction
+        endfunction : new
 
         // Build Phase
         function void build_phase(uvm_phase phase);
@@ -183,14 +183,14 @@
             master_cov_apb = new("master_cov_apb", this);
             slave_cov_export = new("slave_cov_export", this);
             slave_cov_apb = new("slave_cov_apb", this);
-        endfunction
+        endfunction : build_phase
 
         // Connect Phase
         function void connect_phase(uvm_phase phase);
             super.connect_phase(phase);
             master_cov_export.connect(master_cov_apb.analysis_export);
             slave_cov_export.connect(slave_cov_apb.analysis_export);
-        endfunction
+        endfunction : connect_phase
 
         // Run Phase
         task run_phase(uvm_phase phase);
@@ -210,7 +210,7 @@
                     apb_write_read_cov_grp.sample();
                 end
             end
-        endtask
+        endtask : run_phase
 
     endclass : APB_coverage
 

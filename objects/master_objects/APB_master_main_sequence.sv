@@ -6,9 +6,10 @@
         `uvm_object_utils (APB_master_main_sequence);
         APB_master_seq_item seq_item;
 
+        // Default Constructor
         function new(string name = "APB_master_main_sequence");
             super.new(name);            
-        endfunction
+        endfunction : new
         
         task body;
 
@@ -19,7 +20,7 @@
                 finish_item(seq_item);
             end
 
-        endtask
+        endtask : body
         
     endclass : APB_master_main_sequence
 
