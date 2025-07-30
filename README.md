@@ -41,7 +41,7 @@ Assertions cover:
 
   * **APB protocol compliance**
   * **FSM transitions** within master/slave logic
-  * **Signal values states**
+  * **Signal values at different states**
   * **Master and Slave behavior** during various transactions (reads, writes)
 
 -----
